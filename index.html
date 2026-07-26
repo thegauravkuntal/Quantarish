@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quantarish · IT Consultancy</title>
+  <title>Quantaris Group · IT Consultancy</title>
   <!-- Tailwind via CDN + custom starry/black theme -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons -->
@@ -170,11 +170,8 @@
   <!-- Brand -->
   <div class="text-2xl font-bold tracking-wider text-white flex items-center gap-2">
     <i class="fas fa-satellite-dish text-yellow-400"></i>
-    <span class="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
-      QUANTARISH
-    </span>
-    <span class="text-sm font-light text-gray-400 hidden sm:inline-block">
-      · IT CONSULTANCY
+        <span class="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
+      QUANTARIS GROUP
     </span>
   </div>
 
@@ -182,6 +179,7 @@
   <div class="hidden md:flex space-x-8 text-gray-300 font-medium">
     <a href="/index.html" class="hover:text-yellow-300 transition">Home</a>
     <a href="/pages/about.html" class="hover:text-yellow-300 transition">About</a>
+    <a href="/pages/services.html" class="hover:text-yellow-300 transition">Services</a>
     <a href="/pages/career.html" class="hover:text-yellow-300 transition">Career</a>
     <a href="/pages/contact.html" class="hover:text-yellow-300 transition">Contact Us</a>
   </div>
@@ -237,6 +235,12 @@
         class="flex items-center py-4 px-3 text-gray-200 hover:text-yellow-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
         <i class="fas fa-users text-yellow-400 mr-3"></i>
         About
+      </a>
+
+      <a href="/pages/services.html"
+        class="flex items-center py-4 px-3 text-gray-200 hover:text-yellow-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
+        <i class="fas fa-cogs text-yellow-400 mr-3"></i>
+        Services
       </a>
 
       <a href="/pages/career.html"
@@ -308,53 +312,73 @@
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <span class="text-yellow-400 text-sm font-semibold tracking-widest"><i class="fas fa-cogs mr-2"></i> what we offer</span>
-        <h2 class="text-4xl md:text-5xl font-bold text-white mt-3">IT Consultancy <span class="text-yellow-300 glow-text">Services</span></h2>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mt-3">Our <span class="text-yellow-300 glow-text">Services</span></h2>
         <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- card 1 -->
-        <div class="service-card rounded-2xl p-7 text-white transition-all duration-300 hover:bg-white/5">
-          <div class="icon-float text-5xl text-yellow-300 mb-5"><i class="fas fa-cloud-upload-alt"></i></div>
-          <h3 class="text-2xl font-bold">Cloud Strategy</h3>
-          <p class="text-gray-300 text-sm leading-relaxed mt-2">Architect, migrate, and optimize cloud infrastructure (AWS, Azure, GCP) for scalability and cost efficiency.</p>
-          <div class="mt-5 flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></div>
+        <div class="service-card rounded-2xl p-6 text-white transition-all duration-300 hover:bg-white/5">
+          <div class="icon-float text-4xl text-yellow-300 mb-4"><i class="fas fa-bullhorn"></i></div>
+          <h3 class="text-xl font-bold">Social Media Marketing</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mt-2">Strategic social media campaigns that build brand awareness, engage audiences, and drive measurable results.</p>
+          <a href="/pages/services.html" class="mt-4 inline-flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></a>
         </div>
         <!-- card 2 -->
-        <div class="service-card rounded-2xl p-7 text-white transition-all duration-300 hover:bg-white/5">
-          <div class="icon-float text-5xl text-yellow-300 mb-5"><i class="fas fa-robot"></i></div>
-          <h3 class="text-2xl font-bold">AI & Automation</h3>
-          <p class="text-gray-300 text-sm leading-relaxed mt-2">Integrate intelligent automation, LLMs, and computer vision to accelerate your business processes.</p>
-          <div class="mt-5 flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></div>
+        <div class="service-card rounded-2xl p-6 text-white transition-all duration-300 hover:bg-white/5">
+          <div class="icon-float text-4xl text-yellow-300 mb-4"><i class="fas fa-chart-line"></i></div>
+          <h3 class="text-xl font-bold">Performance Marketing</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mt-2">Data-driven advertising strategies across Google, Meta, and programmatic channels to maximize ROI and conversions.</p>
+          <a href="/pages/services.html" class="mt-4 inline-flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></a>
         </div>
         <!-- card 3 -->
-        <div class="service-card rounded-2xl p-7 text-white transition-all duration-300 hover:bg-white/5">
-          <div class="icon-float text-5xl text-yellow-300 mb-5"><i class="fas fa-shield-alt"></i></div>
-          <h3 class="text-2xl font-bold">Cybersecurity</h3>
-          <p class="text-gray-300 text-sm leading-relaxed mt-2">Zero-trust architecture, threat monitoring, compliance audits – safeguard your digital assets.</p>
-          <div class="mt-5 flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></div>
+        <div class="service-card rounded-2xl p-6 text-white transition-all duration-300 hover:bg-white/5">
+          <div class="icon-float text-4xl text-yellow-300 mb-4"><i class="fas fa-code"></i></div>
+          <h3 class="text-xl font-bold">Web Development</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mt-2">Custom, responsive, and high-performance websites built with modern tech stacks for businesses of all sizes.</p>
+          <a href="/pages/services.html" class="mt-4 inline-flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></a>
         </div>
         <!-- card 4 -->
-        <div class="service-card rounded-2xl p-7 text-white transition-all duration-300 hover:bg-white/5">
-          <div class="icon-float text-5xl text-yellow-300 mb-5"><i class="fas fa-code"></i></div>
-          <h3 class="text-2xl font-bold">DevOps & CI/CD</h3>
-          <p class="text-gray-300 text-sm leading-relaxed mt-2">Streamline development with automated pipelines, containerization (K8s, Docker) and monitoring.</p>
-          <div class="mt-5 flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></div>
+        <div class="service-card rounded-2xl p-6 text-white transition-all duration-300 hover:bg-white/5">
+          <div class="icon-float text-4xl text-yellow-300 mb-4"><i class="fas fa-mobile-alt"></i></div>
+          <h3 class="text-xl font-bold">Application Development</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mt-2">Native and cross-platform mobile apps for iOS and Android, designed for performance and user experience.</p>
+          <a href="/pages/services.html" class="mt-4 inline-flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></a>
         </div>
         <!-- card 5 -->
-        <div class="service-card rounded-2xl p-7 text-white transition-all duration-300 hover:bg-white/5">
-          <div class="icon-float text-5xl text-yellow-300 mb-5"><i class="fas fa-database"></i></div>
-          <h3 class="text-2xl font-bold">Data & Analytics</h3>
-          <p class="text-gray-300 text-sm leading-relaxed mt-2">Data lakes, real-time dashboards, BI solutions that turn raw data into actionable insights.</p>
-          <div class="mt-5 flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></div>
+        <div class="service-card rounded-2xl p-6 text-white transition-all duration-300 hover:bg-white/5">
+          <div class="icon-float text-4xl text-yellow-300 mb-4"><i class="fas fa-headset"></i></div>
+          <h3 class="text-xl font-bold">IT Consulting</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mt-2">Strategic IT advisory to align technology with business goals — from digital transformation to infrastructure planning.</p>
+          <a href="/pages/services.html" class="mt-4 inline-flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></a>
         </div>
         <!-- card 6 -->
-        <div class="service-card rounded-2xl p-7 text-white transition-all duration-300 hover:bg-white/5">
-          <div class="icon-float text-5xl text-yellow-300 mb-5"><i class="fas fa-headset"></i></div>
-          <h3 class="text-2xl font-bold">IT Support</h3>
-          <p class="text-gray-300 text-sm leading-relaxed mt-2">24/7 helpdesk, network management, and proactive maintenance to keep your business running.</p>
-          <div class="mt-5 flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></div>
+        <div class="service-card rounded-2xl p-6 text-white transition-all duration-300 hover:bg-white/5">
+          <div class="icon-float text-4xl text-yellow-300 mb-4"><i class="fas fa-cubes"></i></div>
+          <h3 class="text-xl font-bold">Product & SaaS</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mt-2">End-to-end product development and SaaS solutions — from MVP to scalable platforms with recurring revenue models.</p>
+          <a href="/pages/services.html" class="mt-4 inline-flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></a>
         </div>
+        <!-- card 7 -->
+        <div class="service-card rounded-2xl p-6 text-white transition-all duration-300 hover:bg-white/5">
+          <div class="icon-float text-4xl text-yellow-300 mb-4"><i class="fas fa-robot"></i></div>
+          <h3 class="text-xl font-bold">AI Agents</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mt-2">Custom AI agents, chatbots, and intelligent automation systems that transform how businesses operate and serve customers.</p>
+          <a href="/pages/services.html" class="mt-4 inline-flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></a>
+        </div>
+        <!-- card 8 -->
+        <div class="service-card rounded-2xl p-6 text-white transition-all duration-300 hover:bg-white/5">
+          <div class="icon-float text-4xl text-yellow-300 mb-4"><i class="fas fa-lightbulb"></i></div>
+          <h3 class="text-xl font-bold">Business Consulting</h3>
+          <p class="text-gray-300 text-sm leading-relaxed mt-2">Holistic business strategy, process optimization, and growth consulting to scale your operations efficiently.</p>
+          <a href="/pages/services.html" class="mt-4 inline-flex items-center text-yellow-300 text-sm font-medium"><span>Learn more</span> <i class="fas fa-arrow-right ml-2"></i></a>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/pages/services.html" class="inline-flex items-center gap-2 px-8 py-3.5 bg-yellow-400 text-gray-900 font-bold rounded-full shadow-lg shadow-yellow-400/20 hover:shadow-yellow-400/40 transition hover:scale-105">
+          <i class="fas fa-th-large"></i> View All Services
+        </a>
       </div>
     </div>
   </section>
@@ -378,7 +402,7 @@
       </div>
       <div class="md:w-1/2 bg-white/5 backdrop-blur-sm p-6 rounded-3xl border border-white/5">
         <i class="fas fa-quote-right text-4xl text-yellow-300/20 float-right"></i>
-        <p class="text-gray-200 text-lg italic">"Quantarish transformed our legacy systems into a cloud-native platform in 6 weeks. Their strategic insight and execution are unmatched."</p>
+        <p class="text-gray-200 text-lg italic">"Quantaris Group transformed our legacy systems into a cloud-native platform in 6 weeks. Their strategic insight and execution are unmatched."</p>
         <div class="flex items-center gap-3 mt-5">
           <div class="w-12 h-12 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-300"><i class="fas fa-user-tie text-xl"></i></div>
           <div><p class="text-white font-semibold">Michael Torres</p><p class="text-gray-400 text-sm">CTO, Finlytics</p></div>
@@ -429,15 +453,74 @@
     </div>
   </section>
 
+
+
   <!-- FOOTER -->
-  <footer class="relative z-10 border-t border-white/5 py-8 px-6 text-gray-400 text-sm text-center">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-      <p><i class="fas fa-copyright mr-1"></i> 2026 Quantarish · IT with purpose</p>
-      <div class="flex gap-5 mt-3 md:mt-0">
-        <i class="fab fa-linkedin-in hover:text-yellow-300 transition cursor-pointer"></i>
-        <i class="fab fa-twitter hover:text-yellow-300 transition cursor-pointer"></i>
-        <i class="fab fa-github hover:text-yellow-300 transition cursor-pointer"></i>
-        <i class="fab fa-youtube hover:text-yellow-300 transition cursor-pointer"></i>
+  <footer class="relative z-10 border-t border-white/5 bg-black">
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <i class="fas fa-satellite-dish text-yellow-400 text-xl"></i>
+            <span class="text-xl font-bold text-white">QUANTARIS GROUP</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">Empowering businesses with cutting-edge IT consulting, digital transformation, and innovative technology solutions worldwide.</p>
+          <div class="flex gap-3 mt-5">
+            <a href="#" class="w-9 h-9 bg-yellow-400/10 rounded-full flex items-center justify-center text-yellow-300 hover:bg-yellow-400/20 transition"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="w-9 h-9 bg-yellow-400/10 rounded-full flex items-center justify-center text-yellow-300 hover:bg-yellow-400/20 transition"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="w-9 h-9 bg-yellow-400/10 rounded-full flex items-center justify-center text-yellow-300 hover:bg-yellow-400/20 transition"><i class="fab fa-github"></i></a>
+            <a href="#" class="w-9 h-9 bg-yellow-400/10 rounded-full flex items-center justify-center text-yellow-300 hover:bg-yellow-400/20 transition"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="w-9 h-9 bg-yellow-400/10 rounded-full flex items-center justify-center text-yellow-300 hover:bg-yellow-400/20 transition"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="/index.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>Home</a></li>
+            <li><a href="/pages/about.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>About Us</a></li>
+            <li><a href="/pages/services.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>Services</a></li>
+            <li><a href="/pages/career.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>Careers</a></li>
+            <li><a href="/pages/contact.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4">Our Services</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="/pages/services.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>Social Media Marketing</a></li>
+            <li><a href="/pages/services.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>Performance Marketing</a></li>
+            <li><a href="/pages/services.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>Web Development</a></li>
+            <li><a href="/pages/services.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>App Development</a></li>
+            <li><a href="/pages/services.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>IT Consulting</a></li>
+            <li><a href="/pages/services.html" class="text-gray-400 hover:text-yellow-300 transition"><i class="fas fa-chevron-right text-yellow-400 mr-2 text-xs"></i>AI Agents</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4">Contact Us</h4>
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-phone-alt text-yellow-400 mt-1"></i>
+              <div><p class="text-gray-400">Call Us</p><a href="tel:+1234567890" class="text-white hover:text-yellow-300 transition">+1 (234) 567-890</a></div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-envelope text-yellow-400 mt-1"></i>
+              <div><p class="text-gray-400">Email Us</p><a href="mailto:hello@quantarisgroup.com" class="text-white hover:text-yellow-300 transition">hello@quantarisgroup.com</a></div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-map-marker-alt text-yellow-400 mt-1"></i>
+              <div><p class="text-gray-400">Visit Us</p><p class="text-white">123 Innovation Drive,<br>San Francisco, CA 94105</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/5 py-5 px-6">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+        <p>&copy; 2026 Quantaris Group. All rights reserved.</p>
+        <div class="flex gap-6 mt-3 md:mt-0">
+          <a href="#" class="hover:text-yellow-300 transition">Privacy Policy</a>
+          <a href="#" class="hover:text-yellow-300 transition">Terms of Service</a>
+          <a href="#" class="hover:text-yellow-300 transition">Sitemap</a>
+        </div>
       </div>
     </div>
   </footer>
