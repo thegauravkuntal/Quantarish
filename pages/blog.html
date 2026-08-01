@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio · Quantaris Group</title>
+  <title>Blog · Quantaris Group</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
@@ -147,14 +147,14 @@ body {
     .star-fast { animation-duration: 5s; animation-iteration-count: infinite; animation-direction: alternate-reverse; }
 
     /* Card hover */
-    .about-card {
+    .blog-card {
       background: rgba(10, 12, 25, 0.7);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.06);
       transition: all 0.3s ease;
       box-shadow: 0 10px 20px -8px rgba(0,0,0,0.8);
     }
-    .about-card:hover {
+    .blog-card:hover {
       transform: translateY(-8px) scale(1.01);
       border-color: rgba(34,211,238,0.3);
       box-shadow: 0 20px 40px -10px #000000, 0 0 20px 0 rgba(34,211,238,0.15);
@@ -215,8 +215,8 @@ body {
       <a href="/pages/about.html" class="hover:text-cyan-300 transition">About</a>
       <a href="/pages/services.html" class="hover:text-cyan-300 transition">Services</a>
       <a href="/pages/career.html" class="hover:text-cyan-300 transition">Career</a>
-      <a href="/pages/portfolio.html" class="text-cyan-300 transition">Portfolio</a>
-      <a href="/pages/blog.html" class="hover:text-cyan-300 transition">Blog</a>
+      <a href="/pages/portfolio.html" class="hover:text-cyan-300 transition">Portfolio</a>
+      <a href="/pages/blog.html" class="text-cyan-300 transition">Blog</a>
       <a href="/pages/contact.html" class="hover:text-cyan-300 transition">Contact Us</a>
     </div>
 
@@ -287,13 +287,13 @@ body {
       </a>
 
       <a href="/pages/portfolio.html"
-        class="flex items-center py-4 px-3 text-cyan-300 bg-cyan-400/10 rounded-lg transition border-b border-gray-800">
+        class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
         <i class="fas fa-images text-cyan-400 mr-3"></i>
         Portfolio
       </a>
 
       <a href="/pages/blog.html"
-        class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
+        class="flex items-center py-4 px-3 text-cyan-300 bg-cyan-400/10 rounded-lg transition border-b border-gray-800">
         <i class="fas fa-blog text-cyan-400 mr-3"></i>
         Blog
       </a>
@@ -315,39 +315,155 @@ body {
 
   </div>
 
-  <!-- ===== COMING SOON SECTION ===== -->
-  <section class="relative min-h-screen flex items-center justify-center px-6 pt-28 pb-16 z-10">
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="inline-block px-4 py-1.5 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm font-medium tracking-wider mb-6 backdrop-blur-sm">
-        <i class="fas fa-images mr-2"></i> portfolio
-      </div>
-
-      <div class="w-32 h-32 mx-auto mb-8 bg-gradient-to-br from-cyan-400/20 to-violet-500/20 rounded-full flex items-center justify-center border border-cyan-400/20">
-        <i class="fas fa-lock text-5xl text-cyan-300/60"></i>
-      </div>
-
-      <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
-        <span class="bg-gradient-to-r from-white via-cyan-200 to-violet-300 bg-clip-text text-transparent">Coming</span>
-        <span class="glow-text text-cyan-300"> Soon</span>
+  <!-- ===== BLOG HERO ===== -->
+  <section class="relative min-h-[55vh] flex items-center justify-center px-6 pt-32 pb-16 z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="inline-block px-4 py-1.5 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm font-medium tracking-wider mb-6 backdrop-blur-sm">
+        <i class="fas fa-blog mr-2"></i> insights & ideas
+      </span>
+      <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight">
+        <span class="bg-gradient-to-r from-white via-cyan-200 to-violet-300 bg-clip-text text-transparent">Quantaris Group</span>
+        <span class="glow-text text-cyan-300"> Blog</span>
       </h1>
-
-      <p class="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mt-6 leading-relaxed">
-        We're crafting something extraordinary. Our portfolio of completed projects, case studies, and client success stories will be here very soon.
+      <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mt-6 leading-relaxed">
+        Latest Global IT, Web/App Development &amp; AI Marketing Insights (2026)
       </p>
+    </div>
+  </section>
 
-      <div class="mt-10 flex flex-wrap justify-center gap-5">
-        <a href="/pages/services.html" class="px-8 py-3.5 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full shadow-lg shadow-cyan-400/25 shadow-violet-500/20 hover:shadow-cyan-400/30 shadow-violet-500/30 transition hover:scale-105 flex items-center gap-2">
-          <i class="fas fa-cogs"></i> Explore Services
-        </a>
-        <a href="/pages/contact.html" class="px-8 py-3.5 border border-cyan-400/40 text-white font-medium rounded-full hover:bg-cyan-400/10 transition backdrop-blur-sm flex items-center gap-2">
-          <i class="fas fa-comment-dots"></i> Let's Talk
-        </a>
-      </div>
+  <!-- ===== BLOG POSTS ===== -->
+  <section class="relative z-10 py-12 px-6">
+    <div class="max-w-6xl mx-auto space-y-12">
 
-      <div class="mt-16 flex items-center justify-center gap-3 text-gray-500 text-sm">
-        <i class="fas fa-envelope text-cyan-400"></i>
-        <span>Want to discuss a project? <a href="mailto:info@quantaris.com" class="text-cyan-300 hover:underline">info@quantaris.com</a></span>
-      </div>
+      <!-- POST 1 -->
+      <article class="blog-card rounded-3xl p-8 md:p-10 text-white fade-section">
+        <div class="flex flex-wrap items-center gap-3 mb-5">
+          <span class="px-3 py-1 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-xs font-semibold tracking-wide"><i class="fas fa-globe mr-1"></i> IT Trends</span>
+          <span class="px-3 py-1 bg-violet-400/10 border border-violet-400/20 rounded-full text-violet-300 text-xs font-semibold tracking-wide"><i class="fas fa-calendar-alt mr-1"></i> 2026</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          <span class="text-cyan-300 glow-text">5 IT Trends</span> Every Business Leader Needs to Know in 2026
+        </h2>
+        <p class="text-gray-300 leading-relaxed mt-4">
+          2026 marks a turning point for enterprise IT — the shift from AI experimentation to AI accountability. Organizations are moving past pilot projects and demanding measurable business impact from every deployment.
+        </p>
+        <div class="mt-6 space-y-4">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-microchip text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">AI as Enterprise Backbone</h3><p class="text-gray-400 text-sm mt-1">AI is no longer a side project; it's becoming embedded across cloud architecture, software development, and daily operations, moving from proof-of-concept to proof-of-impact.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-robot text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Agentic AI Goes Mainstream</h3><p class="text-gray-400 text-sm mt-1">A large share of enterprises are experimenting with autonomous AI agents, though only a small fraction have moved to full production — signaling major growth potential for early adopters.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-shield-halved text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Governed AI &amp; Data Trust</h3><p class="text-gray-400 text-sm mt-1">As AI touches sensitive data across hybrid and multi-cloud environments, businesses are prioritizing shared governance between IT, security, and data teams rather than siloed ownership.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-industry text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Physical AI &amp; Automation</h3><p class="text-gray-400 text-sm mt-1">Intelligence is moving off the screen and into the real world — automated logistics, smart manufacturing, and autonomous systems are scaling fast.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-bug text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Cybersecurity Under Pressure</h3><p class="text-gray-400 text-sm mt-1">As AI adoption grows, so does the attack surface. Businesses are being urged to close security gaps in SaaS tools and third-party integrations before chasing new tech.</p></div>
+          </div>
+        </div>
+        <div class="mt-7 p-5 rounded-2xl bg-cyan-400/5 border border-cyan-400/15">
+          <p class="text-gray-300 text-sm leading-relaxed"><i class="fas fa-lightbulb text-cyan-300 mr-2"></i><span class="text-white font-semibold">Takeaway:</span> The winners in 2026 won't be the businesses using the most AI — they'll be the ones using it with a clear ROI model, strong governance, and secure foundations. This is exactly where a consulting partner like Quantaris Group adds value.</p>
+        </div>
+      </article>
+
+      <!-- POST 2 -->
+      <article class="blog-card rounded-3xl p-8 md:p-10 text-white fade-section">
+        <div class="flex flex-wrap items-center gap-3 mb-5">
+          <span class="px-3 py-1 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-xs font-semibold tracking-wide"><i class="fas fa-code mr-1"></i> Web &amp; App Development</span>
+          <span class="px-3 py-1 bg-violet-400/10 border border-violet-400/20 rounded-full text-violet-300 text-xs font-semibold tracking-wide"><i class="fas fa-calendar-alt mr-1"></i> 2026</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          The Future of <span class="text-cyan-300 glow-text">Web &amp; App Development</span>: 2026 Trends Businesses Can't Ignore
+        </h2>
+        <p class="text-gray-300 leading-relaxed mt-4">
+          Development in 2026 is defined by speed, intelligence, and restraint — smarter tools, faster builds, and a renewed focus on products that are reliable long after launch.
+        </p>
+        <div class="mt-6 space-y-4">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-magic text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">AI-Powered Development Workflows</h3><p class="text-gray-400 text-sm mt-1">Tools are now assisting developers with code generation, debugging, and UX suggestions, significantly cutting development time and enabling faster delivery cycles.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-mobile-alt text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Progressive Web Apps (PWAs) on the Rise</h3><p class="text-gray-400 text-sm mt-1">Businesses are increasingly choosing PWAs over native apps — offering app-like speed and offline functionality at a fraction of the development cost.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-user-check text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">AI-Driven Personalization</h3><p class="text-gray-400 text-sm mt-1">Websites and apps are moving beyond static design, adapting content, layout, and recommendations in real time based on user behavior.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-layer-group text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Cross-Platform, One Codebase</h3><p class="text-gray-400 text-sm mt-1">Businesses are prioritizing frameworks that let them build once and deploy across web, iOS, and Android — cutting both cost and time-to-market.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-shield-heart text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Built for Longevity, Not Just Launch</h3><p class="text-gray-400 text-sm mt-1">The biggest shift in 2026 is mindset: teams are designing for what happens after launch — stability, maintainability, and trust — rather than just shipping fast.</p></div>
+          </div>
+        </div>
+        <div class="mt-7 p-5 rounded-2xl bg-cyan-400/5 border border-cyan-400/15">
+          <p class="text-gray-300 text-sm leading-relaxed"><i class="fas fa-lightbulb text-cyan-300 mr-2"></i><span class="text-white font-semibold">Takeaway:</span> Businesses that treat their website or app as a living, evolving product — not a one-time project — will outperform competitors who simply "launch and forget." This is central to how Quantaris Group approaches every build.</p>
+        </div>
+      </article>
+
+      <!-- POST 3 -->
+      <article class="blog-card rounded-3xl p-8 md:p-10 text-white fade-section">
+        <div class="flex flex-wrap items-center gap-3 mb-5">
+          <span class="px-3 py-1 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-xs font-semibold tracking-wide"><i class="fas fa-bullhorn mr-1"></i> AI &amp; Digital Marketing</span>
+          <span class="px-3 py-1 bg-violet-400/10 border border-violet-400/20 rounded-full text-violet-300 text-xs font-semibold tracking-wide"><i class="fas fa-calendar-alt mr-1"></i> 2026</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          How <span class="text-cyan-300 glow-text">AI Is Rewriting the Rules</span> of Digital Marketing in 2026
+        </h2>
+        <p class="text-gray-300 leading-relaxed mt-4">
+          Digital marketing in 2026 is no longer about producing more content — it's about being selected as the most relevant, trustworthy answer inside AI-driven search and discovery experiences.
+        </p>
+        <div class="mt-6 space-y-4">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-search text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">AI-First Discovery (GEO)</h3><p class="text-gray-400 text-sm mt-1">With AI-generated answers now appearing across a growing share of search queries, businesses need Generative Engine Optimization (GEO) — structured, authoritative content designed to be cited by AI tools, not just ranked by traditional search engines.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-sliders-h text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Hyper-Personalization at Scale</h3><p class="text-gray-400 text-sm mt-1">Predictive analytics and generative AI now allow brands to deliver tailored content, offers, and messaging to individual users in real time — improving engagement and ROI.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-route text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">AI-Driven Customer Journeys</h3><p class="text-gray-400 text-sm mt-1">Marketing is shifting from post-campaign reporting to real-time, ongoing optimization — AI now models outcomes and adjusts strategy while campaigns are live.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-user text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Human Judgment Still Matters</h3><p class="text-gray-400 text-sm mt-1">The biggest lesson from early AI marketing mistakes (like a global campaign that misfired due to a missed cultural event) is that AI needs human oversight — data alone doesn't understand context.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-project-diagram text-cyan-400 text-lg mt-1"></i>
+            <div><h3 class="text-white font-bold">Marketing as Intelligent Orchestration</h3><p class="text-gray-400 text-sm mt-1">Rather than running isolated campaigns, businesses are building interconnected content ecosystems — supported by AI — that build topical authority and long-term trust.</p></div>
+          </div>
+        </div>
+        <div class="mt-7 p-5 rounded-2xl bg-cyan-400/5 border border-cyan-400/15">
+          <p class="text-gray-300 text-sm leading-relaxed"><i class="fas fa-lightbulb text-cyan-300 mr-2"></i><span class="text-white font-semibold">Takeaway:</span> AI in marketing isn't about replacing strategy — it's about scaling good strategy faster. Brands that combine AI tools with human insight will consistently outperform brands that use AI alone.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== LET'S TALK CTA ===== -->
+  <section class="relative z-10 py-16 px-6 fade-section">
+    <div class="max-w-4xl mx-auto text-center bg-gradient-to-b from-black/40 to-transparent p-12 rounded-3xl border border-cyan-400/10 backdrop-blur-sm">
+      <i class="fas fa-envelope-open-text text-5xl text-cyan-300 mb-4"></i>
+      <h2 class="text-4xl font-bold text-white">Want insights like these for <span class="text-cyan-300 glow-text">your business?</span></h2>
+      <p class="text-gray-300 max-w-xl mx-auto mt-3">Talk to our consultants and turn the latest IT and marketing trends into a practical strategy for growth.</p>
+      <a href="/pages/contact.html" class="inline-block mt-8 px-8 py-3 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full hover:scale-105 transition shadow-lg shadow-cyan-400/25 flex items-center justify-center gap-2">
+        <i class="fas fa-paper-plane"></i> Let's talk
+      </a>
     </div>
   </section>
 
@@ -376,6 +492,7 @@ body {
             <li><a href="/pages/about.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>About Us</a></li>
             <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Services</a></li>
             <li><a href="/pages/career.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Careers</a></li>
+            <li><a href="/pages/portfolio.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Portfolio</a></li>
             <li><a href="/pages/blog.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Blog</a></li>
             <li><a href="/pages/contact.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Contact Us</a></li>
           </ul>
@@ -422,9 +539,8 @@ body {
     </div>
   </footer>
 
-  <!-- JavaScript: stars generation + scroll reveal + sidebar -->
-  
-<script>
+  <!-- JavaScript: galaxy background + stars + neural network + scroll reveal -->
+  <script>
   (function() {
     // ---------- NEURAL NETWORK CANVAS ----------
     const canvas = document.getElementById('neuralCanvas');
