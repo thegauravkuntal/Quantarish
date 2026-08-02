@@ -185,6 +185,104 @@ body {
     ::-webkit-scrollbar-track { background: #05060f; }
     ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #22d3ee, #8b5cf6); border-radius: 6px; }
 
+    /* Welcome Popup */
+    .welcome-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(2, 3, 10, 0.75);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .welcome-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .welcome-popup {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      background: linear-gradient(160deg, rgba(10,12,25,0.98), rgba(15,16,32,0.98));
+      border: 1px solid rgba(34,211,238,0.25);
+      border-radius: 24px;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(34,211,238,0.2), 0 25px 60px rgba(0,0,0,0.8);
+      transform: scale(0.85) translateY(20px);
+      transition: transform 0.4s ease;
+      overflow: hidden;
+    }
+    .welcome-overlay.show .welcome-popup {
+      transform: scale(1) translateY(0);
+    }
+    .welcome-popup::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 260px; height: 180px;
+      background: radial-gradient(ellipse, rgba(34,211,238,0.25), transparent 70%);
+      pointer-events: none;
+    }
+    .welcome-icon {
+      width: 74px; height: 74px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(34,211,238,0.15), rgba(139,92,246,0.15));
+      border: 1px solid rgba(34,211,238,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #22d3ee;
+      font-size: 1.8rem;
+      box-shadow: 0 0 25px rgba(34,211,238,0.3);
+    }
+    .welcome-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .welcome-subtitle {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      background: linear-gradient(90deg, #67e8f9, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+    .welcome-popup p {
+      color: #94a3b8;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 0.85rem;
+    }
+    .welcome-close {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: brightness 0.2s ease, transform 0.2s ease;
+    }
+    .welcome-close:hover {
+      filter: brightness(1.15);
+      transform: scale(1.02);
+    }
+
     /* Marquee / Ticker */
     .ticker-wrap {
       overflow: hidden;
@@ -235,6 +333,18 @@ body {
 </style>
 </head>
 <body>
+
+  <!-- ===== WELCOME POPUP ===== -->
+  <div id="welcomeOverlay" class="welcome-overlay">
+    <div class="welcome-popup">
+      <div class="welcome-icon"><i class="fas fa-rocket"></i></div>
+      <h2 class="welcome-title">We're Just Getting Started</h2>
+      <p class="welcome-subtitle">Welcome to Quantaris Group LLP.</p>
+      <p>Our website is currently being enhanced with new features, case studies, and services. Some sections are still under development, but we're actively working on them.</p>
+      <p>Thank you for visiting. We look forward to sharing the complete experience with you soon.</p>
+      <button id="welcomeClose" class="welcome-close">Continue Exploring</button>
+    </div>
+  </div>
 
   <!-- ===== GALAXY BACKGROUND ===== -->
   <div class="galaxy-bg"></div>
@@ -563,10 +673,15 @@ body {
       <h2 class="text-4xl font-bold text-white">Let's build something <span class="text-cyan-300 glow-text">stellar</span></h2>
       <p class="text-gray-300 max-w-xl mx-auto mt-3">Ready to elevate your IT strategy? Drop us a message and we'll get back within 24 hours.</p>
       <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-        <input type="email" placeholder="Enter your work email" class="px-6 py-3 rounded-full bg-black/40 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/60 focus:shadow-[0_0_15px_rgba(34,211,238,0.3)] w-full sm:w-72" />
-        <button class="px-8 py-3 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20 flex items-center justify-center gap-2">
-          <i class="fas fa-paper-plane"></i> Contact now
-        </button>
+        <form class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto" action="https://formsubmit.co/yash.singh@quantarisgroup.com" method="POST">
+          <input type="hidden" name="_subject" value="New Lead — Quantaris Group Homepage Contact" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="email" name="email" placeholder="Enter your work email" class="px-6 py-3 rounded-full bg-black/40 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/60 focus:shadow-[0_0_15px_rgba(34,211,238,0.3)] w-full sm:w-72" required />
+          <button type="submit" class="px-8 py-3 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20 flex items-center justify-center gap-2">
+            <i class="fas fa-paper-plane"></i> Contact now
+          </button>
+        </form>
       </div>
     </div>
   </section>
@@ -777,6 +892,30 @@ body {
     if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
     if (overlay) overlay.addEventListener('click', closeSidebar);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
+
+    // ---------- WELCOME POPUP ----------
+    const welcomeOverlay = document.getElementById('welcomeOverlay');
+    const welcomeClose = document.getElementById('welcomeClose');
+    function openWelcomePopup() {
+      if (!welcomeOverlay) return;
+      welcomeOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeWelcomePopup() {
+      if (!welcomeOverlay) return;
+      welcomeOverlay.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+    window.addEventListener('load', function() {
+      setTimeout(openWelcomePopup, 800);
+    });
+    if (welcomeClose) welcomeClose.addEventListener('click', closeWelcomePopup);
+    if (welcomeOverlay) welcomeOverlay.addEventListener('click', function(e) {
+      if (e.target === welcomeOverlay) closeWelcomePopup();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeWelcomePopup();
+    });
 
     // ---------- COUNTER ANIMATION ----------
     const counters = document.querySelectorAll('.counter');
