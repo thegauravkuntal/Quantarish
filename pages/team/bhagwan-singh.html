@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhagwan Singh · Co-Founder · Quantaris Group</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#EAF3FE', 100: '#D6E7FD', 200: '#AECDFB', 300: '#7CB0F7', 400: '#4D94EF', 500: '#167FDB', 600: '#0F6BC7', 700: '#0A4FA8', 800: '#0B3C8C', 900: '#0B2F7A' }
+          },
+          fontFamily: {
+            display: ['Sora', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-[#0a0e17] text-slate-200 antialiased">
+
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 md:h-[72px] flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-3 shrink-0">
+        <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-10 h-10 rounded-lg object-cover ring-1 ring-white/10" />
+        <span class="font-display text-lg font-bold tracking-tight text-white hidden sm:block">QUANTARIS <span class="text-brand-400">GROUP</span></span>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/pages/about.html" class="nav-link active">About</a>
+        <a href="/pages/services.html" class="nav-link">Services</a>
+        <a href="/pages/career.html" class="nav-link">Careers</a>
+        <a href="/pages/portfolio.html" class="nav-link">Portfolio</a>
+        <a href="/pages/blog.html" class="nav-link">Blog</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="tel:+918791190999" class="btn btn-primary btn-sm hidden md:inline-flex"><i class="fas fa-phone"></i> Call Now</a>
+        <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-lg border border-white/10 text-slate-300 hover:text-white grid place-items-center text-lg" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] hidden lg:hidden"></div>
+  <aside id="mobileMenu" class="fixed top-0 right-0 h-full w-72 bg-[#0c1220] border-l border-white/10 z-[100] transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col">
+    <div class="flex items-center justify-between px-5 h-16 border-b border-white/10">
+      <span class="font-display font-bold text-white">Menu</span>
+      <button id="menuClose" class="w-9 h-9 rounded-lg border border-white/10 text-slate-300 hover:text-white" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="p-4 space-y-1 overflow-y-auto">
+      <a href="/index.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-home w-5 text-center"></i> Home</a>
+      <a href="/pages/about.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-brand-300 bg-brand-500/10 font-medium"><i class="fas fa-users w-5 text-center"></i> About</a>
+      <a href="/pages/services.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-cogs w-5 text-center"></i> Services</a>
+      <a href="/pages/career.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-briefcase w-5 text-center"></i> Careers</a>
+      <a href="/pages/portfolio.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-images w-5 text-center"></i> Portfolio</a>
+      <a href="/pages/blog.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-blog w-5 text-center"></i> Blog</a>
+      <a href="/pages/contact.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-envelope w-5 text-center"></i> Contact</a>
+    </div>
+    <div class="p-4 mt-auto border-t border-white/10">
+      <a href="tel:+918791190999" class="btn btn-primary w-full justify-center"><i class="fas fa-phone"></i> Call Now</a>
+    </div>
+  </aside>
+
+  <!-- ================= PROFILE HERO ================= -->
+  <section class="relative pt-36 pb-10 px-5 sm:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="w-44 h-52 mx-auto rounded-2xl grid place-items-center bg-brand-500/10 border-2 border-brand-500/40 text-7xl text-brand-300 shadow-[0_0_50px_rgba(22,127,219,0.2)] reveal">
+        <i class="fas fa-compass"></i>
+      </div>
+      <span class="section-badge reveal reveal-delay-1 mt-8"><i class="fas fa-compass"></i> Co-Founder</span>
+      <h1 class="reveal reveal-delay-2 font-display text-4xl md:text-6xl font-extrabold text-white leading-tight mt-7"><span class="text-gradient">Bhagwan Singh</span></h1>
+      <p class="reveal reveal-delay-2 text-slate-400 text-lg mt-3">Co-Founder · Quantaris Group</p>
+      <div class="flex justify-center gap-3 mt-6 reveal reveal-delay-3">
+        <a href="https://www.linkedin.com/company/quantaris-group/posts/?feedView=all" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT PROFILE ================= -->
+  <section class="section-pad pt-8 px-5 sm:px-8">
+    <div class="max-w-3xl mx-auto">
+      <div class="card p-8 md:p-12 reveal">
+        <span class="text-brand-400 text-xs font-semibold tracking-widest"><i class="fas fa-user mr-2"></i> ABOUT</span>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-4">Building the foundations of <span class="text-brand-300">growth</span></h2>
+        <div class="w-16 h-0.5 bg-gradient-to-r from-brand-400 to-brand-600 mt-4 rounded-full"></div>
+        <div class="space-y-5 mt-8">
+          <p class="text-slate-300 leading-relaxed">
+            Bhagwan Singh is a Co-Founder of Quantaris Group. He works closely with the founding team to shape the company's strategic direction, build strong partnerships, and expand Quantaris Group's presence into new markets and industries.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            With a sharp eye for opportunity and a practical, relationship-first approach, Bhagwan plays a key role in opening doors, aligning partners, and ensuring the business stays focused on long-term, sustainable growth.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MEET OUR TEAM ================= -->
+  <section class="section-pad px-5 sm:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="section-badge"><i class="fas fa-user-friends"></i> Meet Our Team</span>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-5">More <span class="text-brand-300">members</span></h2>
+        <p class="text-slate-400 mt-4">Click any member to view their full profile.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 mt-14">
+        <a href="/pages/team/anisha.html" class="card p-6 text-center group reveal">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-user-tie"></i></div>
+          <h3 class="font-display font-bold text-white">Anisha</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">HR</p>
+        </a>
+        <a href="/pages/team/priya-sharma.html" class="card p-6 text-center group reveal reveal-delay-1">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-scale-balanced"></i></div>
+          <h3 class="font-display font-bold text-white">Priya Sharma</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Legal &amp; Compliance</p>
+        </a>
+        <a href="/pages/team/rahul-verma.html" class="card p-6 text-center group reveal reveal-delay-2">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-diagram-project"></i></div>
+          <h3 class="font-display font-bold text-white">Rahul Verma</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Project Manager</p>
+        </a>
+        <a href="/pages/team/arjun-mehta.html" class="card p-6 text-center group reveal">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-chart-line"></i></div>
+          <h3 class="font-display font-bold text-white">Arjun Mehta</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Sales Head</p>
+        </a>
+        <a href="/pages/team/neha-gupta.html" class="card p-6 text-center group reveal reveal-delay-1">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-code"></i></div>
+          <h3 class="font-display font-bold text-white">Neha Gupta</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Software Engineer</p>
+        </a>
+        <a href="/pages/team/rohan-khanna.html" class="card p-6 text-center group reveal reveal-delay-2">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-bullhorn"></i></div>
+          <h3 class="font-display font-bold text-white">Rohan Khanna</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Digital Marketing</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="section-pad pt-0 px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="card p-10 md:p-14 text-center relative overflow-hidden reveal">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-brand-500/15 blur-[90px] rounded-full pointer-events-none"></div>
+        <div class="relative">
+          <i class="fas fa-compass text-4xl text-brand-300 mb-5"></i>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-white">Let's build <span class="text-brand-300">what's next</span></h2>
+          <p class="text-slate-400 max-w-xl mx-auto mt-4">Ready to bring your digital vision to life? Talk to our team and turn your goals into results.</p>
+          <a href="/pages/contact.html" class="btn btn-primary mt-8">Let's talk <i class="fas fa-arrow-right text-sm"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="relative border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <a href="/index.html" class="flex items-center gap-3 mb-4">
+            <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-9 h-9 rounded-lg object-cover ring-1 ring-white/10" />
+            <span class="font-display font-bold text-white">QUANTARIS GROUP</span>
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed">Empowering businesses with cutting-edge IT consulting, digital transformation, and innovative technology solutions worldwide.</p>
+          <div class="flex gap-2.5 mt-5">
+            <a href="https://www.linkedin.com/company/quantaris-group/posts/?feedView=all" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-white mb-5">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="/index.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Home</a></li>
+            <li><a href="/pages/about.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>About Us</a></li>
+            <li><a href="/pages/services.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Services</a></li>
+            <li><a href="/pages/career.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Careers</a></li>
+            <li><a href="/pages/portfolio.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Portfolio</a></li>
+            <li><a href="/pages/blog.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Blog</a></li>
+            <li><a href="/pages/contact.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-white mb-5">Our Services</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="/pages/services.html#ai-digital-marketing" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>AI Digital Marketing</a></li>
+            <li><a href="/pages/services.html#web-dev" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Web Development</a></li>
+            <li><a href="/pages/services.html#app-dev" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>App Development</a></li>
+            <li><a href="/pages/services.html#it-consulting" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>IT Consulting</a></li>
+            <li><a href="/pages/services.html#ai-agents" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>AI Agents</a></li>
+            <li><a href="/pages/services.html#ux-ui" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>UX/UI Design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-white mb-5">Contact Us</h4>
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-start gap-3"><i class="fas fa-phone-alt text-brand-400 mt-1"></i><div><p class="text-slate-400">Call Us</p><a href="tel:+918791190999" class="text-slate-200 hover:text-brand-300 transition">+91 87911 90999</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Email Us</p><a href="mailto:info@quantaris.com" class="text-slate-200 hover:text-brand-300 transition">info@quantaris.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Careers</p><a href="mailto:hr@quantarisgroup.com" class="text-slate-200 hover:text-brand-300 transition">hr@quantarisgroup.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Legal</p><a href="mailto:legal@quantarisgroup.com" class="text-slate-200 hover:text-brand-300 transition">legal@quantarisgroup.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-brand-400 mt-1"></i><div><p class="text-slate-400">Office Address</p><p class="text-slate-200">A Radha Vihar, Kamla Nagar,<br />Agra, UP 282005</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 py-5">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+        <p>&copy; 2026 Quantaris Group. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-brand-300 transition">Privacy Policy</a>
+          <a href="#" class="hover:text-brand-300 transition">Terms of Service</a>
+          <a href="#" class="hover:text-brand-300 transition">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/aris.js"></script>
+</body>
+</html>

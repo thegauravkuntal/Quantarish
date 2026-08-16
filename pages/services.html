@@ -4,1021 +4,654 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services · Quantaris Group</title>
+  <meta name="description" content="From social media to AI, web development to business consulting — complete digital solutions under one roof to help your business grow, scale, and lead." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-body {
-      background: #05060f;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* ===== GALAXY BACKGROUND ===== */
-    .galaxy-bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(34,211,238,0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(59,130,246,0.04) 0%, transparent 50%),
-        #05060f;
-    }
-
-    /* Neural network canvas */
-    #neuralCanvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Floating orbs */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(1px);
-      animation: orbFloat linear infinite alternate;
-    }
-    .orb-1 {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(34,211,238,0.08), transparent 70%);
-      top: 10%; left: -5%;
-      animation-duration: 20s;
-    }
-    .orb-2 {
-      width: 250px; height: 250px;
-      background: radial-gradient(circle, rgba(139,92,246,0.08), transparent 70%);
-      top: 60%; right: -5%;
-      animation-duration: 25s;
-      animation-delay: -5s;
-    }
-    .orb-3 {
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(59,130,246,0.06), transparent 70%);
-      bottom: 10%; left: 30%;
-      animation-duration: 18s;
-      animation-delay: -10s;
-    }
-    @keyframes orbFloat {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(60px, -40px) scale(1.2); }
-      100% { transform: translate(-30px, 50px) scale(0.9); }
-    }
-
-    /* Wireframe shapes */
-    .wireframe {
-      position: fixed;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.04;
-    }
-    .wireframe-hex {
-      width: 120px; height: 120px;
-      border: 1px solid rgba(34,211,238,0.3);
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      top: 15%; right: 10%;
-      animation: wireSpin 30s linear infinite;
-    }
-    .wireframe-diamond {
-      width: 80px; height: 80px;
-      border: 1px solid rgba(139,92,246,0.3);
-      transform: rotate(45deg);
-      bottom: 20%; left: 8%;
-      animation: wireSpin 25s linear infinite reverse;
-    }
-    .wireframe-circle {
-      width: 150px; height: 150px;
-      border: 1px solid rgba(59,130,246,0.2);
-      border-radius: 50%;
-      top: 50%; left: 50%;
-      animation: wirePulse 8s ease-in-out infinite;
-    }
-    @keyframes wireSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes wirePulse {
-      0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.04; }
-      50% { transform: translate(-50%,-50%) scale(1.3); opacity: 0.08; }
-    }
-
-    /* Grid overlay */
-    .grid-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(34,211,238,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34,211,238,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* Star field */
-    .stars-layer {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .star {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 6px 2px rgba(255,255,255,0.6);
-      animation: floatStar linear infinite alternate;
-      opacity: 0.7;
-    }
-    @keyframes floatStar {
-      0% { transform: translate(0,0) scale(1); opacity: 0.3; }
-      100% { transform: translate(40px,-30px) scale(1.3); opacity: 1; }
-    }
-    .star-slow { animation-duration: 9s; animation-iteration-count: infinite; animation-direction: alternate; }
-    .star-fast { animation-duration: 5s; animation-iteration-count: infinite; animation-direction: alternate-reverse; }
-
-    /* Card hover */
-    .about-card {
-      background: rgba(10, 12, 25, 0.7);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 20px -8px rgba(0,0,0,0.8);
-    }
-    .about-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      border-color: rgba(34,211,238,0.3);
-      box-shadow: 0 20px 40px -10px #000000, 0 0 20px 0 rgba(34,211,238,0.15);
-    }
-    .glow-text { text-shadow: 0 0 15px rgba(34,211,238,0.4); }
-    .icon-float { animation: iconPulse 3s infinite alternate; }
-    @keyframes iconPulse {
-      0% { transform: scale(1) rotate(0deg); }
-      100% { transform: scale(1.1) rotate(3deg); }
-    }
-    .fade-section { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
-    .fade-section.visible { opacity: 1; transform: translateY(0); }
-    .nav-glass {
-      background: rgba(5,6,15,0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(34,211,238,0.08);
-    }
-    #mobileSidebar {
-      background-color: #05060f !important;
-      background: #05060f !important;
-      box-shadow: -5px 0 30px rgba(0,0,0,0.95) !important;
-      border-left: 1px solid rgba(34,211,238,0.08);
-    }
-    #mobileSidebar a:hover { background: rgba(34,211,238,0.08) !important; }
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #05060f; }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #22d3ee, #8b5cf6); border-radius: 6px; }
-</style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#EAF3FE', 100: '#D6E7FD', 200: '#AECDFB', 300: '#7CB0F7', 400: '#4D94EF', 500: '#167FDB', 600: '#0F6BC7', 700: '#0A4FA8', 800: '#0B3C8C', 900: '#0B2F7A' }
+          },
+          fontFamily: {
+            display: ['Sora', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
-<body>
+<body class="bg-[#0a0e17] text-slate-200 antialiased">
 
-  <!-- ===== GALAXY BACKGROUND ===== -->
-  <div class="galaxy-bg"></div>
-  <canvas id="neuralCanvas"></canvas>
-  <div class="grid-overlay"></div>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="wireframe wireframe-hex"></div>
-  <div class="wireframe wireframe-diamond"></div>
-  <div class="wireframe wireframe-circle"></div>
-  <div id="star-container" class="stars-layer"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
 
-  <!-- NAVBAR -->
-  <nav class="nav-glass fixed w-full z-50 top-0 left-0 py-3 px-6 flex justify-between items-center">
-    <div class="text-2xl font-bold tracking-wider text-white flex items-center gap-2">
-      <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-14 h-14 rounded-lg object-cover border border-cyan-400/30" />
-      <span class="bg-gradient-to-r from-cyan-300 via-violet-400 to-purple-500 bg-clip-text text-transparent">QUANTARIS GROUP</span>
-    </div>
-    <div class="hidden md:flex space-x-8 text-gray-300 font-medium">
-      <a href="/index.html" class="hover:text-cyan-300 transition">Home</a>
-      <a href="/pages/about.html" class="hover:text-cyan-300 transition">About</a>
-      <a href="/pages/services.html" class="text-cyan-300 transition">Services</a>
-      <a href="/pages/career.html" class="hover:text-cyan-300 transition">Career</a>
-    <a href="/pages/portfolio.html" class="hover:text-cyan-300 transition">Portfolio</a>
-    <a href="/pages/blog.html" class="hover:text-cyan-300 transition">Blog</a>
-    <a href="/pages/contact.html" class="hover:text-cyan-300 transition">Contact Us</a>
-    </div>
-    <div class="flex items-center gap-4">
-      <a href="tel:+918791190999" class="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-semibold hover:brightness-110 transition">
-        <i class="fas fa-phone-alt"></i> Call Now
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 md:h-[72px] flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-3 shrink-0">
+        <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-10 h-10 rounded-lg object-cover ring-1 ring-white/10" />
+        <span class="font-display text-lg font-bold tracking-tight text-white hidden sm:block">QUANTARIS <span class="text-brand-400">GROUP</span></span>
       </a>
-      <button id="hamburgerBtn" class="md:hidden text-gray-300 hover:text-cyan-300 text-2xl transition"><i class="fas fa-bars"></i></button>
-    </div>
-    <div id="mobileSidebar" class="fixed top-0 right-0 h-screen w-[280px] bg-black text-white transform translate-x-full transition-transform duration-300 ease-in-out z-[9999] md:hidden shadow-2xl">
-      <div class="flex items-center justify-between p-5 border-b border-gray-800 bg-black">
-        <span class="text-cyan-400 font-bold text-lg tracking-wider">MENU</span>
-        <button id="closeSidebarBtn" class="text-gray-400 hover:text-cyan-300 text-2xl transition"><i class="fas fa-times"></i></button>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/pages/services.html" class="nav-link active">Services</a>
+        <a href="/pages/career.html" class="nav-link">Careers</a>
+        <a href="/pages/portfolio.html" class="nav-link">Portfolio</a>
+        <a href="/pages/blog.html" class="nav-link">Blog</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
       </div>
-      <div class="flex flex-col bg-black h-full px-5 py-6">
-        <a href="/index.html" class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800"><i class="fas fa-home text-cyan-400 mr-3"></i> Home</a>
-        <a href="/pages/about.html" class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800"><i class="fas fa-users text-cyan-400 mr-3"></i> About</a>
-        <a href="/pages/services.html" class="flex items-center py-4 px-3 text-cyan-300 bg-cyan-400/10 rounded-lg transition border-b border-gray-800"><i class="fas fa-cogs text-cyan-400 mr-3"></i> Services</a>
-        <a href="/pages/career.html" class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800"><i class="fas fa-briefcase text-cyan-400 mr-3"></i> Career</a>
-        <a href="/pages/portfolio.html" class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800"><i class="fas fa-images text-cyan-400 mr-3"></i> Portfolio</a>
-        <a href="/pages/blog.html" class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800"><i class="fas fa-blog text-cyan-400 mr-3"></i> Blog</a>
-        <a href="/pages/contact.html" class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800"><i class="fas fa-envelope text-cyan-400 mr-3"></i> Contact Us</a>
-        <a href="tel:+918791190999" class="mt-8 flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full hover:brightness-110 transition"><i class="fas fa-phone-alt"></i> Call Now</a>
+      <div class="flex items-center gap-3">
+        <a href="tel:+918791190999" class="btn btn-primary btn-sm hidden md:inline-flex"><i class="fas fa-phone"></i> Call Now</a>
+        <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-lg border border-white/10 text-slate-300 hover:text-white grid place-items-center text-lg" aria-label="Open menu"><i class="fas fa-bars"></i></button>
       </div>
     </div>
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 hidden z-[9998] md:hidden"></div>
   </nav>
 
-  <!-- HERO -->
-  <section class="relative min-h-[55vh] flex items-center justify-center px-6 pt-32 pb-10 z-10">
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] hidden lg:hidden"></div>
+  <aside id="mobileMenu" class="fixed top-0 right-0 h-full w-72 bg-[#0c1220] border-l border-white/10 z-[100] transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col">
+    <div class="flex items-center justify-between px-5 h-16 border-b border-white/10">
+      <span class="font-display font-bold text-white">Menu</span>
+      <button id="menuClose" class="w-9 h-9 rounded-lg border border-white/10 text-slate-300 hover:text-white" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="p-4 space-y-1 overflow-y-auto">
+      <a href="/index.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-home w-5 text-center"></i> Home</a>
+      <a href="/pages/about.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-users w-5 text-center"></i> About</a>
+      <a href="/pages/services.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-brand-300 bg-brand-500/10 font-medium"><i class="fas fa-cogs w-5 text-center"></i> Services</a>
+      <a href="/pages/career.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-briefcase w-5 text-center"></i> Careers</a>
+      <a href="/pages/portfolio.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-images w-5 text-center"></i> Portfolio</a>
+      <a href="/pages/blog.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-blog w-5 text-center"></i> Blog</a>
+      <a href="/pages/contact.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-envelope w-5 text-center"></i> Contact</a>
+    </div>
+    <div class="p-4 mt-auto border-t border-white/10">
+      <a href="tel:+918791190999" class="btn btn-primary w-full justify-center"><i class="fas fa-phone"></i> Call Now</a>
+    </div>
+  </aside>
+
+  <!-- ================= HERO ================= -->
+  <section class="relative pt-36 pb-12 md:pt-44 px-5 sm:px-8">
     <div class="max-w-5xl mx-auto text-center">
-      <span class="inline-block px-4 py-1.5 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm font-medium tracking-wider mb-6">
-        <i class="fas fa-cogs mr-2"></i> what we offer
-      </span>
-      <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
-        Our <span class="glow-text text-cyan-300">Services</span>
+      <span class="section-badge reveal"><i class="fas fa-cogs"></i> What We Offer</span>
+      <h1 class="reveal reveal-delay-1 font-display text-4xl sm:text-6xl font-extrabold text-white leading-tight mt-7">
+        Our <span class="text-gradient">Services</span>
       </h1>
-      <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mt-6 leading-relaxed">
+      <p class="reveal reveal-delay-2 text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mt-6 leading-relaxed">
         From social media to AI, from web development to business consulting — we provide complete digital solutions under one roof to help your business grow, scale, and lead.
       </p>
     </div>
   </section>
 
-  <!-- ============================== SERVICE 1: SOCIAL MEDIA MARKETING ============================== -->
-  <section id="social-media" class="relative z-10 py-16 px-6 fade-section">
+  <!-- ================= QUICK NAV ================= -->
+  <section class="px-5 sm:px-8 pt-2 pb-6">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-center gap-2.5">
+      <a href="#ai-digital-marketing" class="chip hover:!bg-brand-500/20 transition"><i class="fas fa-bullhorn"></i> AI Digital Marketing</a>
+      <a href="#web-dev" class="chip hover:!bg-brand-500/20 transition"><i class="fas fa-code"></i> Web Development</a>
+      <a href="#app-dev" class="chip hover:!bg-brand-500/20 transition"><i class="fas fa-mobile-alt"></i> App Development</a>
+      <a href="#it-consulting" class="chip hover:!bg-brand-500/20 transition"><i class="fas fa-headset"></i> IT Consulting</a>
+      <a href="#product-saas" class="chip hover:!bg-brand-500/20 transition"><i class="fas fa-cubes"></i> Product &amp; SaaS</a>
+      <a href="#ai-agents" class="chip hover:!bg-brand-500/20 transition"><i class="fas fa-robot"></i> AI Agents</a>
+      <a href="#business" class="chip hover:!bg-brand-500/20 transition"><i class="fas fa-lightbulb"></i> Business Consulting</a>
+      <a href="#ux-ui" class="chip hover:!bg-brand-500/20 transition"><i class="fas fa-pen-ruler"></i> UX/UI Design</a>
+    </div>
+  </section>
+
+  <!-- ================= SERVICE 1: AI DIGITAL MARKETING ================= -->
+  <section id="ai-digital-marketing" class="px-5 sm:px-8 py-10 md:py-12">
     <div class="max-w-6xl mx-auto">
-      <div class="svc-block p-8 md:p-12">
-        <div class="flex flex-col lg:flex-row gap-10">
-
-          <!-- Left content -->
+      <div class="card p-8 md:p-12 reveal">
+        <div class="flex flex-col lg:flex-row gap-12">
           <div class="flex-1">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-cyan-400/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-bullhorn text-3xl text-cyan-300"></i>
-              </div>
+            <div class="flex items-start gap-5 mb-8">
+              <div class="icon-box icon-box-lg"><i class="fas fa-bullhorn"></i></div>
               <div>
-                <span class="text-cyan-400 text-xs font-semibold tracking-widest uppercase">Service 01</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Social Media Marketing</h2>
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Service 01</span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-white mt-2">AI Digital Marketing</h2>
               </div>
             </div>
-
-            <p class="text-gray-300 leading-relaxed mb-6 text-lg">
-              In today's digital world, your brand's social media presence is your first impression. At Quantaris Group, we create powerful social media strategies that don't just get likes — they build communities, drive engagement, and generate real business results. Whether you're a startup looking to establish your brand or an established business wanting to dominate social platforms, our team of creative strategists, content creators, and data analysts work together to craft campaigns that resonate with your audience and convert followers into loyal customers.
+            <p class="text-slate-300 leading-relaxed text-lg">
+              Every rupee you spend on marketing should bring measurable returns. Our AI Digital Marketing service is one complete, AI-powered suite covering every channel — Google Ads, Meta (Facebook &amp; Instagram), PPC, and beyond. We design, launch, and optimize data-driven campaigns across the full digital landscape, all focused on one goal: converting your ad spend into revenue.
             </p>
-
-            <p class="text-gray-400 leading-relaxed mb-8">
-              We manage everything — from content calendar planning and creative design to community management and influencer collaborations. Our data-first approach means every post, story, and campaign is backed by analytics, ensuring maximum reach and ROI. We specialize in platforms like Instagram, Facebook, LinkedIn, Twitter/X, YouTube, and Pinterest, adapting our strategy to each platform's unique algorithm and audience behavior.
+            <p class="text-slate-400 leading-relaxed mt-4">
+              Our AI engine continuously monitors campaigns in real-time, A/B tests creatives, adjusts targeting, and optimizes bids so you always get the highest possible ROI. From Google Search, Display, and Shopping ads to Meta and LinkedIn campaigns, programmatic display, retargeting, and organic social media — every marketing service you need lives inside this one service, backed by analytics dashboards that give you complete transparency.
             </p>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-check-double text-cyan-400 mr-2"></i> What's Included</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Social Media Strategy & Planning</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Content Creation (Posts, Reels, Stories)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Community Management & Engagement</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Influencer Outreach & Partnerships</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Hashtag Research & SEO Optimization</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Monthly Analytics & Performance Reports</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Paid Social Ad Campaigns</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Brand Voice & Visual Identity</span></div>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-check-double text-brand-400 mr-2"></i> What's Included</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Google Ads (Search, Display, Shopping, YouTube)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Meta Ads (Facebook &amp; Instagram)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>LinkedIn, PPC &amp; Programmatic Advertising</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Retargeting &amp; Remarketing Campaigns</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Social Media Strategy &amp; Content Creation</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Community Management &amp; Influencer Outreach</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Landing Page &amp; Conversion Rate Optimization (CRO)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Weekly Reports, Dashboards &amp; AI Insights</span></div>
             </div>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-layer-group text-cyan-400 mr-2"></i> Platforms We Manage</h3>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm"><i class="fab fa-instagram mr-1"></i> Instagram</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm"><i class="fab fa-facebook mr-1"></i> Facebook</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm"><i class="fab fa-linkedin mr-1"></i> LinkedIn</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm"><i class="fab fa-twitter mr-1"></i> Twitter / X</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm"><i class="fab fa-youtube mr-1"></i> YouTube</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm"><i class="fab fa-pinterest mr-1"></i> Pinterest</span>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-layer-group text-brand-400 mr-2"></i> Channels &amp; Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Google Ads</span>
+              <span class="chip">Meta Business Suite</span>
+              <span class="chip">LinkedIn Ads</span>
+              <span class="chip">YouTube Ads</span>
+              <span class="chip">PPC &amp; Programmatic</span>
+              <span class="chip">Google Analytics 4</span>
+              <span class="chip">SEMrush</span>
+              <span class="chip">HubSpot</span>
             </div>
           </div>
-
-          <!-- Right sidebar -->
-          <div class="lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
-              <h4 class="text-white font-bold mb-4"><i class="fas fa-chart-pie text-cyan-400 mr-2"></i> Key Results</h4>
-              <div class="space-y-4">
-                <div><span class="text-cyan-300 font-bold text-2xl">3x</span><p class="text-gray-400 text-sm">Average engagement increase</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">50K+</span><p class="text-gray-400 text-sm">Followers grown for clients</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">85%</span><p class="text-gray-400 text-sm">Client retention rate</p></div>
+          <div class="lg:w-80 flex-shrink-0 space-y-5">
+            <div class="rounded-2xl border border-white/10 bg-[#0b1120] p-6">
+              <h4 class="font-display font-bold text-white mb-5"><i class="fas fa-trophy text-brand-400 mr-2"></i> Our Results</h4>
+              <div class="space-y-5">
+                <div><span class="stat-value text-2xl">5x</span><p class="text-sm text-slate-400 mt-1">Average ROAS for clients</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">40%</span><p class="text-sm text-slate-400 mt-1">Reduction in cost per lead</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">50K+</span><p class="text-sm text-slate-400 mt-1">Audience grown for clients</p></div>
               </div>
             </div>
-            <a href="/pages/contact.html" class="block w-full px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full text-center hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20">
-              <i class="fas fa-paper-plane mr-2"></i> Get Free Consultation
-            </a>
+            <a href="/pages/contact.html" class="btn btn-primary w-full">Get Free Audit <i class="fas fa-paper-plane text-sm"></i></a>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================== SERVICE 2: PERFORMANCE MARKETING ============================== -->
-  <section id="performance" class="relative z-10 py-16 px-6 fade-section">
+  <!-- ================= SERVICE 3: WEB DEVELOPMENT ================= -->
+  <section id="web-dev" class="px-5 sm:px-8 py-10 md:py-12">
     <div class="max-w-6xl mx-auto">
-      <div class="svc-block p-8 md:p-12">
-        <div class="flex flex-col lg:flex-row gap-10">
-
+      <div class="card p-8 md:p-12 reveal">
+        <div class="flex flex-col lg:flex-row gap-12">
           <div class="flex-1">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-cyan-400/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-chart-line text-3xl text-cyan-300"></i>
-              </div>
+            <div class="flex items-start gap-5 mb-8">
+              <div class="icon-box icon-box-lg"><i class="fas fa-code"></i></div>
               <div>
-                <span class="text-cyan-400 text-xs font-semibold tracking-widest uppercase">Service 02</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Performance Marketing</h2>
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Service 02</span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-white mt-2">Web Development</h2>
               </div>
             </div>
-
-            <p class="text-gray-300 leading-relaxed mb-6 text-lg">
-              Every rupee you spend on advertising should bring measurable returns. That's exactly what our performance marketing services deliver. We design, execute, and optimize data-driven advertising campaigns across Google Ads, Meta (Facebook & Instagram), programmatic display networks, and retargeting platforms — all focused on one goal: converting your ad spend into revenue. Our team continuously monitors campaigns in real-time, A/B tests creatives, adjusts targeting, and optimizes bids to ensure you get the highest possible ROI.
-            </p>
-
-            <p class="text-gray-400 leading-relaxed mb-8">
-              Unlike traditional marketing agencies that focus on vanity metrics, we obsess over what actually matters — leads, sales, sign-ups, and revenue. Our proprietary analytics dashboard gives you complete transparency into where every penny of your ad budget is going and what it's generating. From Google Search and Shopping campaigns to Facebook Lead Ads and programmatic retargeting, we handle the full spectrum of paid digital marketing with precision and accountability.
-            </p>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-check-double text-cyan-400 mr-2"></i> What's Included</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Google Ads (Search, Display, Shopping)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Meta Ads (Facebook & Instagram)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Programmatic & Display Advertising</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Retargeting & Remarketing Campaigns</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Landing Page Design & Optimization</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">A/B Testing of Creatives & Copy</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Conversion Rate Optimization (CRO)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Weekly Performance Reports & Dashboards</span></div>
-            </div>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-tools text-cyan-400 mr-2"></i> Channels & Tools</h3>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Google Ads</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Meta Business Suite</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Google Analytics 4</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Hotjar</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">HubSpot</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">SEMrush</span>
-            </div>
-          </div>
-
-          <div class="lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
-              <h4 class="text-white font-bold mb-4"><i class="fas fa-trophy text-cyan-400 mr-2"></i> Our Results</h4>
-              <div class="space-y-4">
-                <div><span class="text-cyan-300 font-bold text-2xl">5x</span><p class="text-gray-400 text-sm">Average ROAS for clients</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">40%</span><p class="text-gray-400 text-sm">Reduction in cost per lead</p></div>
-
-              </div>
-            </div>
-            <a href="/pages/contact.html" class="block w-full px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full text-center hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20">
-              <i class="fas fa-paper-plane mr-2"></i> Get Free Audit
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== SERVICE 3: WEB DEVELOPMENT ============================== -->
-  <section id="web-dev" class="relative z-10 py-16 px-6 fade-section">
-    <div class="max-w-6xl mx-auto">
-      <div class="svc-block p-8 md:p-12">
-        <div class="flex flex-col lg:flex-row gap-10">
-
-          <div class="flex-1">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-cyan-400/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-code text-3xl text-cyan-300"></i>
-              </div>
-              <div>
-                <span class="text-cyan-400 text-xs font-semibold tracking-widest uppercase">Service 03</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Web Development</h2>
-              </div>
-            </div>
-
-            <p class="text-gray-300 leading-relaxed mb-6 text-lg">
+            <p class="text-slate-300 leading-relaxed text-lg">
               Your website is your digital storefront — and first impressions matter. Quantaris Group builds fast, beautiful, and conversion-optimized websites that not only look stunning but also perform flawlessly across all devices. Whether you need a corporate website, an e-commerce store, a custom web application, or a content-driven platform, our development team combines clean code with stunning design to create digital experiences that captivate visitors and drive business growth.
             </p>
-
-            <p class="text-gray-400 leading-relaxed mb-8">
+            <p class="text-slate-400 leading-relaxed mt-4">
               We follow a user-first development approach, meaning every pixel, every interaction, and every page load is designed with your end user in mind. Our websites are built with SEO best practices from day one, ensuring you rank higher on Google from the start. We use modern frameworks like React, Next.js, and Node.js, along with headless CMS solutions, to deliver blazing-fast performance. From initial wireframing and UI/UX design to full-stack development and post-launch support, we handle the entire web development lifecycle.
             </p>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-check-double text-cyan-400 mr-2"></i> What's Included</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Custom Website Design & Development</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">E-commerce Store Setup (Shopify, WooCommerce)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Responsive & Mobile-First Design</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">UI/UX Design & Prototyping</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">SEO & Page Speed Optimization</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">CMS Integration (WordPress, Strapi)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Third-Party API Integrations</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">SSL, Hosting & Domain Setup</span></div>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-check-double text-brand-400 mr-2"></i> What's Included</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Custom Website Design &amp; Development</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>E-commerce Store Setup (Shopify, WooCommerce)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Responsive &amp; Mobile-First Design</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>UI/UX Design &amp; Prototyping</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>SEO &amp; Page Speed Optimization</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>CMS Integration (WordPress, Strapi)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Third-Party API Integrations</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>SSL, Hosting &amp; Domain Setup</span></div>
             </div>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-layer-group text-cyan-400 mr-2"></i> Tech Stack</h3>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">React</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Next.js</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Node.js</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Tailwind CSS</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">WordPress</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Shopify</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">PHP</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">MySQL</span>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-layer-group text-brand-400 mr-2"></i> Tech Stack</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">React</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">Tailwind CSS</span>
+              <span class="chip">WordPress</span>
+              <span class="chip">Shopify</span>
+              <span class="chip">PHP</span>
+              <span class="chip">MySQL</span>
             </div>
           </div>
-
-          <div class="lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
-              <h4 class="text-white font-bold mb-4"><i class="fas fa-rocket text-cyan-400 mr-2"></i> Why Us</h4>
-              <div class="space-y-4">
-                <div><span class="text-cyan-300 font-bold text-2xl">&lt;1s</span><p class="text-gray-400 text-sm">Average page load time</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">98/100</span><p class="text-gray-400 text-sm">Google PageSpeed score</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">200+</span><p class="text-gray-400 text-sm">Websites delivered</p></div>
+          <div class="lg:w-80 flex-shrink-0 space-y-5">
+            <div class="rounded-2xl border border-white/10 bg-[#0b1120] p-6">
+              <h4 class="font-display font-bold text-white mb-5"><i class="fas fa-rocket text-brand-400 mr-2"></i> Why Us</h4>
+              <div class="space-y-5">
+                <div><span class="stat-value text-2xl">&lt;1s</span><p class="text-sm text-slate-400 mt-1">Average page load time</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">98/100</span><p class="text-sm text-slate-400 mt-1">Google PageSpeed score</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">200+</span><p class="text-sm text-slate-400 mt-1">Websites delivered</p></div>
               </div>
             </div>
-            <a href="/pages/contact.html" class="block w-full px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full text-center hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20">
-              <i class="fas fa-paper-plane mr-2"></i> Start Your Project
-            </a>
+            <a href="/pages/contact.html" class="btn btn-primary w-full">Start Your Project <i class="fas fa-paper-plane text-sm"></i></a>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================== SERVICE 4: APPLICATION DEVELOPMENT ============================== -->
-  <section id="app-dev" class="relative z-10 py-16 px-6 fade-section">
+  <!-- ================= SERVICE 4: APPLICATION DEVELOPMENT ================= -->
+  <section id="app-dev" class="px-5 sm:px-8 py-10 md:py-12">
     <div class="max-w-6xl mx-auto">
-      <div class="svc-block p-8 md:p-12">
-        <div class="flex flex-col lg:flex-row gap-10">
-
+      <div class="card p-8 md:p-12 reveal">
+        <div class="flex flex-col lg:flex-row gap-12">
           <div class="flex-1">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-cyan-400/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-mobile-alt text-3xl text-cyan-300"></i>
-              </div>
+            <div class="flex items-start gap-5 mb-8">
+              <div class="icon-box icon-box-lg"><i class="fas fa-mobile-alt"></i></div>
               <div>
-                <span class="text-cyan-400 text-xs font-semibold tracking-widest uppercase">Service 04</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Application Development</h2>
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Service 03</span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-white mt-2">Application Development</h2>
               </div>
             </div>
-
-            <p class="text-gray-300 leading-relaxed mb-6 text-lg">
+            <p class="text-slate-300 leading-relaxed text-lg">
               Your customers live on their phones — and your business should be there too. Quantaris Group designs and develops high-performance mobile applications for iOS and Android that deliver seamless user experiences, lightning-fast performance, and stunning visual design. Whether you need a consumer-facing app, an enterprise internal tool, or a marketplace platform, our mobile development team turns your idea into a polished, store-ready product that users love.
             </p>
-
-            <p class="text-gray-400 leading-relaxed mb-8">
+            <p class="text-slate-400 leading-relaxed mt-4">
               We specialize in both native development (Swift for iOS, Kotlin for Android) and cross-platform solutions (Flutter, React Native), giving you the flexibility to choose the approach that best fits your budget, timeline, and performance requirements. Our development process includes rigorous testing, iterative prototyping, and close collaboration with your team to ensure the final product matches your vision perfectly. From app store submission to ongoing maintenance and feature updates, we're with you every step of the way.
             </p>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-check-double text-cyan-400 mr-2"></i> What's Included</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">iOS & Android Native App Development</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Cross-Platform (Flutter / React Native)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">UI/UX Design & Interactive Prototyping</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Backend API Development & Integration</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Push Notifications & Real-Time Features</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Payment Gateway Integration</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">App Store Optimization (ASO)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Post-Launch Maintenance & Updates</span></div>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-check-double text-brand-400 mr-2"></i> What's Included</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>iOS &amp; Android Native App Development</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Cross-Platform (Flutter / React Native)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>UI/UX Design &amp; Interactive Prototyping</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Backend API Development &amp; Integration</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Push Notifications &amp; Real-Time Features</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Payment Gateway Integration</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>App Store Optimization (ASO)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Post-Launch Maintenance &amp; Updates</span></div>
             </div>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-layer-group text-cyan-400 mr-2"></i> Technologies</h3>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Flutter</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">React Native</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Swift / SwiftUI</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Kotlin</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Firebase</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">AWS Amplify</span>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-layer-group text-brand-400 mr-2"></i> Technologies</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Flutter</span>
+              <span class="chip">React Native</span>
+              <span class="chip">Swift / SwiftUI</span>
+              <span class="chip">Kotlin</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">AWS Amplify</span>
             </div>
           </div>
-
-          <div class="lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
-              <h4 class="text-white font-bold mb-4"><i class="fas fa-mobile text-cyan-400 mr-2"></i> Track Record</h4>
-              <div class="space-y-4">
-                <div><span class="text-cyan-300 font-bold text-2xl">100+</span><p class="text-gray-400 text-sm">Apps launched on stores</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">4.7★</span><p class="text-gray-400 text-sm">Average app store rating</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">1M+</span><p class="text-gray-400 text-sm">Total app downloads</p></div>
+          <div class="lg:w-80 flex-shrink-0 space-y-5">
+            <div class="rounded-2xl border border-white/10 bg-[#0b1120] p-6">
+              <h4 class="font-display font-bold text-white mb-5"><i class="fas fa-mobile text-brand-400 mr-2"></i> Track Record</h4>
+              <div class="space-y-5">
+                <div><span class="stat-value text-2xl">100+</span><p class="text-sm text-slate-400 mt-1">Apps launched on stores</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">4.7&#9733;</span><p class="text-sm text-slate-400 mt-1">Average app store rating</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">1M+</span><p class="text-sm text-slate-400 mt-1">Total app downloads</p></div>
               </div>
             </div>
-            <a href="/pages/contact.html" class="block w-full px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full text-center hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20">
-              <i class="fas fa-paper-plane mr-2"></i> Build Your App
-            </a>
+            <a href="/pages/contact.html" class="btn btn-primary w-full">Build Your App <i class="fas fa-paper-plane text-sm"></i></a>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================== SERVICE 5: IT CONSULTING ============================== -->
-  <section id="it-consulting" class="relative z-10 py-16 px-6 fade-section">
+  <!-- ================= SERVICE 5: IT CONSULTING ================= -->
+  <section id="it-consulting" class="px-5 sm:px-8 py-10 md:py-12">
     <div class="max-w-6xl mx-auto">
-      <div class="svc-block p-8 md:p-12">
-        <div class="flex flex-col lg:flex-row gap-10">
-
+      <div class="card p-8 md:p-12 reveal">
+        <div class="flex flex-col lg:flex-row gap-12">
           <div class="flex-1">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-cyan-400/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-headset text-3xl text-cyan-300"></i>
-              </div>
+            <div class="flex items-start gap-5 mb-8">
+              <div class="icon-box icon-box-lg"><i class="fas fa-headset"></i></div>
               <div>
-                <span class="text-cyan-400 text-xs font-semibold tracking-widest uppercase">Service 05</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">IT Consulting</h2>
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Service 04</span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-white mt-2">IT Consulting</h2>
               </div>
             </div>
-
-            <p class="text-gray-300 leading-relaxed mb-6 text-lg">
-              Technology is only as good as the strategy behind it. Quantaris Group's IT consulting services help businesses make smarter technology decisions, align IT investments with business goals, and navigate complex digital transformations with confidence. Our team of senior consultants — with backgrounds at companies like Google, McKinsey, and Deloitte — brings deep industry knowledge and technical expertise to every engagement, ensuring you get practical, actionable advice that drives real results.
+            <p class="text-slate-300 leading-relaxed text-lg">
+              Technology is only as good as the strategy behind it. Quantaris Group's IT consulting services help businesses make smarter technology decisions, align IT investments with business goals, and navigate complex digital transformations with confidence. Our team of senior consultants brings deep industry knowledge and technical expertise to every engagement, ensuring you get practical, actionable advice that drives real results.
             </p>
-
-            <p class="text-gray-400 leading-relaxed mb-8">
+            <p class="text-slate-400 leading-relaxed mt-4">
               Whether you're looking to migrate to the cloud, modernize legacy systems, strengthen your cybersecurity posture, or build an IT roadmap for the next 3-5 years, we provide end-to-end consulting that covers strategy, architecture, implementation, and ongoing optimization. We don't believe in one-size-fits-all solutions — every recommendation is tailored to your unique business context, industry requirements, and growth objectives.
             </p>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-check-double text-cyan-400 mr-2"></i> What's Included</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Digital Transformation Strategy</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Cloud Migration (AWS, Azure, GCP)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">IT Infrastructure Assessment & Planning</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Cybersecurity Audit & Strategy</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Vendor Evaluation & Management</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">IT Governance & Compliance</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Technology Roadmap Development</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Cost Optimization & ROI Analysis</span></div>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-check-double text-brand-400 mr-2"></i> What's Included</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Digital Transformation Strategy</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Cloud Migration (AWS, Azure, GCP)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>IT Infrastructure Assessment &amp; Planning</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Cybersecurity Audit &amp; Strategy</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Vendor Evaluation &amp; Management</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>IT Governance &amp; Compliance</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Technology Roadmap Development</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Cost Optimization &amp; ROI Analysis</span></div>
             </div>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-industry text-cyan-400 mr-2"></i> Industries We Serve</h3>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Healthcare</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Finance & Banking</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Retail & E-commerce</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Manufacturing</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Education</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Logistics</span>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-industry text-brand-400 mr-2"></i> Industries We Serve</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Healthcare</span>
+              <span class="chip">Finance &amp; Banking</span>
+              <span class="chip">Retail &amp; E-commerce</span>
+              <span class="chip">Manufacturing</span>
+              <span class="chip">Education</span>
+              <span class="chip">Logistics</span>
             </div>
           </div>
-
-          <div class="lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
-              <h4 class="text-white font-bold mb-4"><i class="fas fa-award text-cyan-400 mr-2"></i> Consulting Edge</h4>
-              <div class="space-y-4">
-                <div><span class="text-cyan-300 font-bold text-2xl">500+</span><p class="text-gray-400 text-sm">Consulting engagements</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">30%</span><p class="text-gray-400 text-sm">Average IT cost reduction</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">6</span><p class="text-gray-400 text-sm">Industries served</p></div>
+          <div class="lg:w-80 flex-shrink-0 space-y-5">
+            <div class="rounded-2xl border border-white/10 bg-[#0b1120] p-6">
+              <h4 class="font-display font-bold text-white mb-5"><i class="fas fa-award text-brand-400 mr-2"></i> Consulting Edge</h4>
+              <div class="space-y-5">
+                <div><span class="stat-value text-2xl">500+</span><p class="text-sm text-slate-400 mt-1">Consulting engagements</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">30%</span><p class="text-sm text-slate-400 mt-1">Average IT cost reduction</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">6</span><p class="text-sm text-slate-400 mt-1">Industries served</p></div>
               </div>
             </div>
-            <a href="/pages/contact.html" class="block w-full px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full text-center hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20">
-              <i class="fas fa-paper-plane mr-2"></i> Book a Consultation
-            </a>
+            <a href="/pages/contact.html" class="btn btn-primary w-full">Book a Consultation <i class="fas fa-paper-plane text-sm"></i></a>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================== SERVICE 6: PRODUCT & SAAS ============================== -->
-  <section id="product-saas" class="relative z-10 py-16 px-6 fade-section">
+  <!-- ================= SERVICE 6: PRODUCT & SAAS ================= -->
+  <section id="product-saas" class="px-5 sm:px-8 py-10 md:py-12">
     <div class="max-w-6xl mx-auto">
-      <div class="svc-block p-8 md:p-12">
-        <div class="flex flex-col lg:flex-row gap-10">
-
+      <div class="card p-8 md:p-12 reveal">
+        <div class="flex flex-col lg:flex-row gap-12">
           <div class="flex-1">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-cyan-400/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-cubes text-3xl text-cyan-300"></i>
-              </div>
+            <div class="flex items-start gap-5 mb-8">
+              <div class="icon-box icon-box-lg"><i class="fas fa-cubes"></i></div>
               <div>
-                <span class="text-cyan-400 text-xs font-semibold tracking-widest uppercase">Service 06</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Product & SaaS</h2>
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Service 05</span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-white mt-2">Product &amp; SaaS</h2>
               </div>
             </div>
-
-            <p class="text-gray-300 leading-relaxed mb-6 text-lg">
+            <p class="text-slate-300 leading-relaxed text-lg">
               Building a successful SaaS product or digital platform requires more than just good code — it requires product thinking, market validation, scalable architecture, and a relentless focus on user experience. Quantaris Group is your end-to-end product development partner, taking you from initial idea validation and market research through MVP development, launch, and continuous iteration. We've helped founders and enterprises build SaaS platforms that serve thousands of users and generate recurring revenue.
             </p>
-
-            <p class="text-gray-400 leading-relaxed mb-8">
+            <p class="text-slate-400 leading-relaxed mt-4">
               Our product team includes former product managers, UX researchers, and full-stack engineers who understand what it takes to build products people actually want to use. We follow lean product development principles, using rapid prototyping, user testing, and data-driven iteration to minimize risk and maximize product-market fit. Whether you're building a B2B SaaS tool, a marketplace, a subscription platform, or an enterprise internal product, we have the expertise to bring it to life efficiently and at scale.
             </p>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-check-double text-cyan-400 mr-2"></i> What's Included</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Idea Validation & Market Research</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">MVP Design, Development & Launch</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Product Strategy & Roadmapping</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">SaaS Architecture & Scalable Backend</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Subscription & Billing Integration</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">User Analytics & Behavioral Tracking</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">User Research & Usability Testing</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Continuous Iteration & Feature Releases</span></div>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-check-double text-brand-400 mr-2"></i> What's Included</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Idea Validation &amp; Market Research</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>MVP Design, Development &amp; Launch</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Product Strategy &amp; Roadmapping</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>SaaS Architecture &amp; Scalable Backend</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Subscription &amp; Billing Integration</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>User Analytics &amp; Behavioral Tracking</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>User Research &amp; Usability Testing</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Continuous Iteration &amp; Feature Releases</span></div>
             </div>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-layer-group text-cyan-400 mr-2"></i> Tech Stack</h3>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">React / Next.js</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Node.js</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">PostgreSQL</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Stripe</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">AWS</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Docker</span>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-layer-group text-brand-400 mr-2"></i> Tech Stack</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">React / Next.js</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Stripe</span>
+              <span class="chip">AWS</span>
+              <span class="chip">Docker</span>
             </div>
           </div>
-
-          <div class="lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
-              <h4 class="text-white font-bold mb-4"><i class="fas fa-chart-line text-cyan-400 mr-2"></i> Product Impact</h4>
-              <div class="space-y-4">
-                <div><span class="text-cyan-300 font-bold text-2xl">50+</span><p class="text-gray-400 text-sm">SaaS products built</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">10K+</span><p class="text-gray-400 text-sm">Active users on our products</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">80%</span><p class="text-gray-400 text-sm">MVP to product-market fit rate</p></div>
+          <div class="lg:w-80 flex-shrink-0 space-y-5">
+            <div class="rounded-2xl border border-white/10 bg-[#0b1120] p-6">
+              <h4 class="font-display font-bold text-white mb-5"><i class="fas fa-chart-line text-brand-400 mr-2"></i> Product Impact</h4>
+              <div class="space-y-5">
+                <div><span class="stat-value text-2xl">50+</span><p class="text-sm text-slate-400 mt-1">SaaS products built</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">10K+</span><p class="text-sm text-slate-400 mt-1">Active users on our products</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">80%</span><p class="text-sm text-slate-400 mt-1">MVP to product-market fit rate</p></div>
               </div>
             </div>
-            <a href="/pages/contact.html" class="block w-full px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full text-center hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20">
-              <i class="fas fa-paper-plane mr-2"></i> Build Your Product
-            </a>
+            <a href="/pages/contact.html" class="btn btn-primary w-full">Build Your Product <i class="fas fa-paper-plane text-sm"></i></a>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================== SERVICE 7: AI AGENTS ============================== -->
-  <section id="ai-agents" class="relative z-10 py-16 px-6 fade-section">
+  <!-- ================= SERVICE 7: AI AGENTS ================= -->
+  <section id="ai-agents" class="px-5 sm:px-8 py-10 md:py-12">
     <div class="max-w-6xl mx-auto">
-      <div class="svc-block p-8 md:p-12">
-        <div class="flex flex-col lg:flex-row gap-10">
-
+      <div class="card p-8 md:p-12 reveal">
+        <div class="flex flex-col lg:flex-row gap-12">
           <div class="flex-1">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-cyan-400/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-robot text-3xl text-cyan-300"></i>
-              </div>
+            <div class="flex items-start gap-5 mb-8">
+              <div class="icon-box icon-box-lg"><i class="fas fa-robot"></i></div>
               <div>
-                <span class="text-cyan-400 text-xs font-semibold tracking-widest uppercase">Service 07</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">AI Agents</h2>
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Service 06</span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-white mt-2">AI Agents</h2>
               </div>
             </div>
-
-            <p class="text-gray-300 leading-relaxed mb-6 text-lg">
+            <p class="text-slate-300 leading-relaxed text-lg">
               Artificial Intelligence is no longer a future concept — it's here, and it's transforming how businesses operate. Quantaris Group builds custom AI agents, intelligent chatbots, and automation systems that work 24/7 to handle tasks, serve customers, analyze data, and make decisions — freeing your team to focus on high-value work. Our AI solutions are built using the latest large language models (LLMs), retrieval-augmented generation (RAG), and machine learning techniques to deliver accurate, context-aware, and genuinely useful AI systems.
             </p>
-
-            <p class="text-gray-400 leading-relaxed mb-8">
+            <p class="text-slate-400 leading-relaxed mt-4">
               We don't believe in generic chatbots. Every AI agent we build is custom-trained on your data, aligned with your brand voice, and designed to solve specific business problems — whether that's automating customer support, generating reports, qualifying leads, processing documents, or managing internal workflows. Our team includes ML engineers and AI researchers who understand both the cutting-edge technology and the practical business applications, ensuring our AI solutions deliver measurable ROI from day one.
             </p>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-check-double text-cyan-400 mr-2"></i> What's Included</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Custom AI Agent Development</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">AI Chatbots & Virtual Assistants</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">LLM Integration (GPT, Claude, Llama)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">RAG (Retrieval-Augmented Generation)</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Workflow Automation with AI</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Predictive Analytics & ML Models</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Document Processing & Data Extraction</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">AI Strategy & Implementation Roadmap</span></div>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-check-double text-brand-400 mr-2"></i> What's Included</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Custom AI Agent Development</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>AI Chatbots &amp; Virtual Assistants</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>LLM Integration (GPT, Claude, Llama)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>RAG (Retrieval-Augmented Generation)</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Workflow Automation with AI</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Predictive Analytics &amp; ML Models</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Document Processing &amp; Data Extraction</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>AI Strategy &amp; Implementation Roadmap</span></div>
             </div>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-layer-group text-cyan-400 mr-2"></i> AI Stack</h3>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">OpenAI / GPT-4</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">LangChain</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Python</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">TensorFlow / PyTorch</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Pinecone / Weaviate</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Hugging Face</span>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-layer-group text-brand-400 mr-2"></i> AI Stack</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">OpenAI / GPT-4</span>
+              <span class="chip">LangChain</span>
+              <span class="chip">Python</span>
+              <span class="chip">TensorFlow / PyTorch</span>
+              <span class="chip">Pinecone / Weaviate</span>
+              <span class="chip">Hugging Face</span>
             </div>
           </div>
-
-          <div class="lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
-              <h4 class="text-white font-bold mb-4"><i class="fas fa-brain text-cyan-400 mr-2"></i> AI Impact</h4>
-              <div class="space-y-4">
-                <div><span class="text-cyan-300 font-bold text-2xl">70%</span><p class="text-gray-400 text-sm">Cost reduction in operations</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">24/7</span><p class="text-gray-400 text-sm">Automated customer support</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">10x</span><p class="text-gray-400 text-sm">Faster data processing</p></div>
+          <div class="lg:w-80 flex-shrink-0 space-y-5">
+            <div class="rounded-2xl border border-white/10 bg-[#0b1120] p-6">
+              <h4 class="font-display font-bold text-white mb-5"><i class="fas fa-brain text-brand-400 mr-2"></i> AI Impact</h4>
+              <div class="space-y-5">
+                <div><span class="stat-value text-2xl">70%</span><p class="text-sm text-slate-400 mt-1">Cost reduction in operations</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">24/7</span><p class="text-sm text-slate-400 mt-1">Automated customer support</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">10x</span><p class="text-sm text-slate-400 mt-1">Faster data processing</p></div>
               </div>
             </div>
-            <a href="/pages/contact.html" class="block w-full px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full text-center hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20">
-              <i class="fas fa-paper-plane mr-2"></i> Explore AI Solutions
-            </a>
+            <a href="/pages/contact.html" class="btn btn-primary w-full">Explore AI Solutions <i class="fas fa-paper-plane text-sm"></i></a>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================== SERVICE 8: BUSINESS CONSULTING ============================== -->
-  <section id="business" class="relative z-10 py-16 px-6 fade-section">
+  <!-- ================= SERVICE 8: BUSINESS CONSULTING ================= -->
+  <section id="business" class="px-5 sm:px-8 py-10 md:py-12">
     <div class="max-w-6xl mx-auto">
-      <div class="svc-block p-8 md:p-12">
-        <div class="flex flex-col lg:flex-row gap-10">
-
+      <div class="card p-8 md:p-12 reveal">
+        <div class="flex flex-col lg:flex-row gap-12">
           <div class="flex-1">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 bg-cyan-400/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-lightbulb text-3xl text-cyan-300"></i>
-              </div>
+            <div class="flex items-start gap-5 mb-8">
+              <div class="icon-box icon-box-lg"><i class="fas fa-lightbulb"></i></div>
               <div>
-                <span class="text-cyan-400 text-xs font-semibold tracking-widest uppercase">Service 08</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Business Consulting</h2>
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Service 07</span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-white mt-2">Business Consulting</h2>
               </div>
             </div>
-
-            <p class="text-gray-300 leading-relaxed mb-6 text-lg">
+            <p class="text-slate-300 leading-relaxed text-lg">
               Technology alone doesn't drive growth — strategy does. Quantaris Group's business consulting services help companies optimize their operations, define clear growth strategies, and build scalable processes that support long-term success. Our consultants combine deep business acumen with technical expertise, offering a unique perspective that bridges the gap between business goals and technology execution. Whether you're a startup trying to find product-market fit or an enterprise looking to streamline operations, we provide the strategic guidance you need.
             </p>
-
-            <p class="text-gray-400 leading-relaxed mb-8">
+            <p class="text-slate-400 leading-relaxed mt-4">
               We work closely with your leadership team to understand your business model, market position, competitive landscape, and growth objectives. From there, we develop actionable strategies backed by data analysis and industry benchmarks. Our consulting engagements cover everything from go-to-market strategy and revenue optimization to operational efficiency and organizational transformation. We don't just hand you a report — we work alongside your team to implement recommendations, measure results, and iterate until you achieve your goals.
             </p>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-check-double text-cyan-400 mr-2"></i> What's Included</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Business Process Optimization</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Go-to-Market Strategy</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Revenue & Growth Strategy</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Market Research & Competitive Analysis</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Organizational Design & Change Management</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Financial Modeling & KPI Frameworks</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Startup Advisory & Fundraising Support</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan-400 flex-shrink-0"></i><span class="text-gray-200">Operational Excellence & Lean Processes</span></div>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-check-double text-brand-400 mr-2"></i> What's Included</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Business Process Optimization</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Go-to-Market Strategy</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Revenue &amp; Growth Strategy</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Market Research &amp; Competitive Analysis</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Organizational Design &amp; Change Management</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Financial Modeling &amp; KPI Frameworks</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Startup Advisory &amp; Fundraising Support</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Operational Excellence &amp; Lean Processes</span></div>
             </div>
-
-            <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-industry text-cyan-400 mr-2"></i> Consulting Areas</h3>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Strategy</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Operations</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Growth</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Analytics</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Digital Transformation</span>
-              <span class="px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm">Startup Advisory</span>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-industry text-brand-400 mr-2"></i> Consulting Areas</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Strategy</span>
+              <span class="chip">Operations</span>
+              <span class="chip">Growth</span>
+              <span class="chip">Analytics</span>
+              <span class="chip">Digital Transformation</span>
+              <span class="chip">Startup Advisory</span>
             </div>
           </div>
-
-          <div class="lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
-              <h4 class="text-white font-bold mb-4"><i class="fas fa-handshake text-cyan-400 mr-2"></i> Consulting Results</h4>
-              <div class="space-y-4">
-                <div><span class="text-cyan-300 font-bold text-2xl">2x</span><p class="text-gray-400 text-sm">Average revenue growth</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">40%</span><p class="text-gray-400 text-sm">Operational cost savings</p></div>
-                <div><span class="text-cyan-300 font-bold text-2xl">95%</span><p class="text-gray-400 text-sm">Client satisfaction rate</p></div>
+          <div class="lg:w-80 flex-shrink-0 space-y-5">
+            <div class="rounded-2xl border border-white/10 bg-[#0b1120] p-6">
+              <h4 class="font-display font-bold text-white mb-5"><i class="fas fa-handshake text-brand-400 mr-2"></i> Consulting Results</h4>
+              <div class="space-y-5">
+                <div><span class="stat-value text-2xl">2x</span><p class="text-sm text-slate-400 mt-1">Average revenue growth</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">40%</span><p class="text-sm text-slate-400 mt-1">Operational cost savings</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">95%</span><p class="text-sm text-slate-400 mt-1">Client satisfaction rate</p></div>
               </div>
             </div>
-            <a href="/pages/contact.html" class="block w-full px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full text-center hover:scale-105 transition shadow-lg shadow-cyan-400/25 shadow-violet-500/20">
-              <i class="fas fa-paper-plane mr-2"></i> Schedule a Call
-            </a>
+            <a href="/pages/contact.html" class="btn btn-primary w-full">Schedule a Call <i class="fas fa-paper-plane text-sm"></i></a>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================== CTA ============================== -->
-  <section class="relative z-10 py-20 px-6 fade-section">
-    <div class="max-w-4xl mx-auto text-center bg-gradient-to-b from-cyan-400/5 to-transparent p-12 rounded-3xl border border-cyan-400/10">
-      <i class="fas fa-rocket text-5xl text-cyan-300 mb-6"></i>
-      <h2 class="text-4xl font-bold text-white">Ready to <span class="glow-text text-cyan-300">transform</span> your business?</h2>
-      <p class="text-gray-300 max-w-xl mx-auto mt-4 text-lg">Let's discuss which services are right for you. Book a free consultation call with our team and get a customized strategy for your business.</p>
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/pages/contact.html" class="px-10 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full shadow-lg shadow-cyan-400/25 shadow-violet-500/20 hover:shadow-cyan-400/30 shadow-violet-500/30 transition hover:scale-105 flex items-center justify-center gap-2 text-lg">
-          <i class="fas fa-paper-plane"></i> Contact Now
-        </a>
-        <a href="tel:+918791190999" class="px-10 py-4 border border-cyan-400/40 text-white font-medium rounded-full hover:bg-cyan-400/10 transition flex items-center justify-center gap-2 text-lg">
-          <i class="fas fa-phone-alt"></i> Call Us
-        </a>
+  <!-- ================= SERVICE 9: UX/UI DESIGN ================= -->
+  <section id="ux-ui" class="px-5 sm:px-8 py-10 md:py-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="card p-8 md:p-12 reveal">
+        <div class="flex flex-col lg:flex-row gap-12">
+          <div class="flex-1">
+            <div class="flex items-start gap-5 mb-8">
+              <div class="icon-box icon-box-lg"><i class="fas fa-pen-ruler"></i></div>
+              <div>
+                <span class="text-brand-300 text-xs font-semibold tracking-widest uppercase">Service 08</span>
+                <h2 class="font-display text-2xl md:text-3xl font-bold text-white mt-2">UX/UI Design</h2>
+              </div>
+            </div>
+            <p class="text-slate-300 leading-relaxed text-lg">
+              Great products are built on great experiences. Quantaris Group's UX/UI design team turns complex problems into clean, intuitive, and beautiful interfaces that users love — and that drive measurable business results. We begin with research: understanding your users, their goals, and their pain points. From there we craft user journeys, wireframes, and high-fidelity prototypes, and test them early so we validate ideas before a single line of code is written.
+            </p>
+            <p class="text-slate-400 leading-relaxed mt-4">
+              Our design practice spans everything from marketing websites and product dashboards to full mobile app experiences. We pair thoughtful interaction design with a scalable design system, ensuring consistency, accessibility, and speed across every screen. Whether you need a redesign to lift conversion or a brand-new product interface from scratch, we deliver polished, production-ready designs engineered to be handed straight to development.
+            </p>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-check-double text-brand-400 mr-2"></i> What's Included</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>User Research &amp; Personas</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Wireframing &amp; Prototyping</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>UX Audits &amp; Usability Testing</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>High-Fidelity UI Design</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Design Systems &amp; Component Libraries</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Interaction &amp; Motion Design</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Web &amp; Mobile App Interfaces</span></div>
+              <div class="check-item"><i class="fas fa-circle-check"></i><span>Accessibility (WCAG) Compliance</span></div>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white mt-10 mb-5"><i class="fas fa-industry text-brand-400 mr-2"></i> Design Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Figma</span>
+              <span class="chip">Adobe XD</span>
+              <span class="chip">Sketch</span>
+              <span class="chip">Framer</span>
+              <span class="chip">Design Systems</span>
+              <span class="chip">Prototyping</span>
+            </div>
+          </div>
+          <div class="lg:w-80 flex-shrink-0 space-y-5">
+            <div class="rounded-2xl border border-white/10 bg-[#0b1120] p-6">
+              <h4 class="font-display font-bold text-white mb-5"><i class="fas fa-chart-line text-brand-400 mr-2"></i> Design Results</h4>
+              <div class="space-y-5">
+                <div><span class="stat-value text-2xl">+38%</span><p class="text-sm text-slate-400 mt-1">Average conversion lift</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">3x</span><p class="text-sm text-slate-400 mt-1">Faster design-to-dev handoff</p></div>
+                <div class="divider"></div>
+                <div><span class="stat-value text-2xl">-45%</span><p class="text-sm text-slate-400 mt-1">Support tickets on redesigned flows</p></div>
+              </div>
+            </div>
+            <a href="/pages/contact.html" class="btn btn-primary w-full">Schedule a Call <i class="fas fa-paper-plane text-sm"></i></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="h-16"></div>
+  <!-- ================= CTA ================= -->
+  <section class="px-5 sm:px-8 py-20">
+    <div class="max-w-4xl mx-auto">
+      <div class="card p-10 md:p-14 text-center relative overflow-hidden reveal">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-brand-500/15 blur-[90px] rounded-full pointer-events-none"></div>
+        <div class="relative">
+          <i class="fas fa-rocket text-4xl text-brand-300 mb-5"></i>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-white">Ready to <span class="text-gradient">transform</span> your business?</h2>
+          <p class="text-slate-400 max-w-xl mx-auto mt-4">Let's discuss which services are right for you. Book a free consultation call with our team and get a customized strategy for your business.</p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/pages/contact.html" class="btn btn-primary text-base px-9">Contact Now <i class="fas fa-paper-plane text-sm"></i></a>
+            <a href="tel:+918791190999" class="btn btn-outline text-base px-9">Call Us <i class="fas fa-phone-alt text-sm"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
-  <footer class="relative z-10 border-t border-white/5 bg-black">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+  <!-- ================= FOOTER ================= -->
+  <footer class="relative border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <div class="flex items-center gap-2 mb-4">
-            <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-8 h-8 rounded-full object-cover border border-cyan-400/30" />
-            <span class="text-xl font-bold text-white">QUANTARIS GROUP</span>
-          </div>
-          <p class="text-gray-400 text-sm leading-relaxed">Empowering businesses with cutting-edge IT consulting, digital transformation, and innovative technology solutions worldwide.</p>
-          <div class="flex gap-3 mt-5">
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-github"></i></a>
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-instagram"></i></a>
+          <a href="/index.html" class="flex items-center gap-3 mb-4">
+            <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-9 h-9 rounded-lg object-cover ring-1 ring-white/10" />
+            <span class="font-display font-bold text-white">QUANTARIS GROUP</span>
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed">Empowering businesses with cutting-edge IT consulting, digital transformation, and innovative technology solutions worldwide.</p>
+          <div class="flex gap-2.5 mt-5">
+            <a href="https://www.linkedin.com/company/quantaris-group/posts/?feedView=all" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         <div>
-          <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+          <h4 class="font-display font-bold text-white mb-5">Quick Links</h4>
           <ul class="space-y-3 text-sm">
-            <li><a href="/index.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Home</a></li>
-            <li><a href="/pages/about.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>About Us</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Services</a></li>
-            <li><a href="/pages/career.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Careers</a></li><li><a href="/pages/portfolio.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Portfolio</a></li>
-            <li><a href="/pages/blog.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Blog</a></li>
-            <li><a href="/pages/contact.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Contact Us</a></li>
+            <li><a href="/index.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Home</a></li>
+            <li><a href="/pages/about.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>About Us</a></li>
+            <li><a href="/pages/services.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Services</a></li>
+            <li><a href="/pages/career.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Careers</a></li>
+            <li><a href="/pages/portfolio.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Portfolio</a></li>
+            <li><a href="/pages/blog.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Blog</a></li>
+            <li><a href="/pages/contact.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Contact Us</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="text-white font-bold text-lg mb-4">Our Services</h4>
+          <h4 class="font-display font-bold text-white mb-5">Our Services</h4>
           <ul class="space-y-3 text-sm">
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Social Media Marketing</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Performance Marketing</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Web Development</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>App Development</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>IT Consulting</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>AI Agents</a></li>
+            <li><a href="/pages/services.html#ai-digital-marketing" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>AI Digital Marketing</a></li>
+            <li><a href="/pages/services.html#web-dev" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Web Development</a></li>
+            <li><a href="/pages/services.html#app-dev" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>App Development</a></li>
+            <li><a href="/pages/services.html#it-consulting" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>IT Consulting</a></li>
+            <li><a href="/pages/services.html#ai-agents" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>AI Agents</a></li>
+            <li><a href="/pages/services.html#ux-ui" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>UX/UI Design</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="text-white font-bold text-lg mb-4">Contact Us</h4>
+          <h4 class="font-display font-bold text-white mb-5">Contact Us</h4>
           <ul class="space-y-4 text-sm">
-            <li class="flex items-start gap-3">
-              <i class="fas fa-phone-alt text-cyan-400 mt-1"></i>
-              <div><p class="text-gray-400">Call Us</p><a href="tel:+918791190999" class="text-white hover:text-cyan-300 transition">+91 87911 90999</a></div>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-envelope text-cyan-400 mt-1"></i>
-              <div><p class="text-gray-400">Email Us</p><a href="mailto:info@quantaris.com" class="text-white hover:text-cyan-300 transition">info@quantaris.com</a></div>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-map-marker-alt text-cyan-400 mt-1"></i>
-              <div><p class="text-gray-400">Office Address</p><p class="text-white">A Radha Vihar, Kamla Nagar,<br>Agra, UP 282005</p></div>
-            </li>
+            <li class="flex items-start gap-3"><i class="fas fa-phone-alt text-brand-400 mt-1"></i><div><p class="text-slate-400">Call Us</p><a href="tel:+918791190999" class="text-slate-200 hover:text-brand-300 transition">+91 87911 90999</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Email Us</p><a href="mailto:info@quantaris.com" class="text-slate-200 hover:text-brand-300 transition">info@quantaris.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Careers</p><a href="mailto:hr@quantarisgroup.com" class="text-slate-200 hover:text-brand-300 transition">hr@quantarisgroup.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Legal</p><a href="mailto:legal@quantarisgroup.com" class="text-slate-200 hover:text-brand-300 transition">legal@quantarisgroup.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-brand-400 mt-1"></i><div><p class="text-slate-400">Office Address</p><p class="text-slate-200">A Radha Vihar, Kamla Nagar,<br />Agra, UP 282005</p></div></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="border-t border-white/5 py-5 px-6">
-      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+    <div class="border-t border-white/10 py-5">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
         <p>&copy; 2026 Quantaris Group. All rights reserved.</p>
-        <div class="flex gap-6 mt-3 md:mt-0">
-          <a href="#" class="hover:text-cyan-300 transition">Privacy Policy</a>
-          <a href="#" class="hover:text-cyan-300 transition">Terms of Service</a>
-          <a href="#" class="hover:text-cyan-300 transition">Sitemap</a>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-brand-300 transition">Privacy Policy</a>
+          <a href="#" class="hover:text-brand-300 transition">Terms of Service</a>
+          <a href="#" class="hover:text-brand-300 transition">Sitemap</a>
         </div>
       </div>
     </div>
   </footer>
 
-  
-<script>
-  (function() {
-    // ---------- NEURAL NETWORK CANVAS ----------
-    const canvas = document.getElementById('neuralCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const PARTICLE_COUNT = 70;
-    const CONNECT_DISTANCE = 150;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 2 + 1;
-        this.color = Math.random() > 0.5 ? 'rgba(34,211,238,' : 'rgba(139,92,246,';
-        this.pulse = Math.random() * Math.PI * 2;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.pulse += 0.02;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-      draw() {
-        const alpha = 0.3 + Math.sin(this.pulse) * 0.2;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color + alpha + ')';
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius + 3, 0, Math.PI * 2);
-        ctx.fillStyle = this.color + (alpha * 0.3) + ')';
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
-
-    function drawConnections() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECT_DISTANCE) {
-            const alpha = (1 - dist / CONNECT_DISTANCE) * 0.15;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(34,211,238,' + alpha + ')';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function animateNeural() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      drawConnections();
-      requestAnimationFrame(animateNeural);
-    }
-    animateNeural();
-
-    // ---------- STARS GENERATION ----------
-    const container = document.getElementById('star-container');
-    for (let i = 0; i < 150; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      const size = Math.random() * 3 + 1;
-      star.style.width = size + 'px';
-      star.style.height = size + 'px';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 6 + 4) + 's';
-      star.style.animationDelay = (Math.random() * 5) + 's';
-      star.style.opacity = Math.random() * 0.6 + 0.3;
-      const colors = ['rgba(34,211,238,0.4)', 'rgba(139,92,246,0.4)', 'rgba(255,255,255,0.5)'];
-      star.style.boxShadow = '0 0 8px 2px ' + colors[Math.floor(Math.random() * colors.length)];
-      container.appendChild(star);
-    }
-    for (let i = 0; i < 25; i++) {
-      const big = document.createElement('div');
-      big.classList.add('star', 'star-slow');
-      const size = Math.random() * 5 + 3;
-      big.style.width = size + 'px';
-      big.style.height = size + 'px';
-      big.style.left = Math.random() * 100 + '%';
-      big.style.top = Math.random() * 100 + '%';
-      big.style.animationDuration = (Math.random() * 12 + 10) + 's';
-      big.style.animationDelay = (Math.random() * 8) + 's';
-      big.style.boxShadow = '0 0 20px 6px rgba(34,211,238,0.2)';
-      big.style.opacity = 0.2 + Math.random() * 0.3;
-      container.appendChild(big);
-    }
-
-    // ---------- SCROLL REVEAL ----------
-    const sections = document.querySelectorAll('.fade-section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    sections.forEach(section => observer.observe(section));
-    setTimeout(() => {
-      sections.forEach(section => {
-        if (section.getBoundingClientRect().top < window.innerHeight * 0.85) section.classList.add('visible');
-      });
-    }, 200);
-
-    // ---------- SIDEBAR TOGGLE ----------
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
-    const mobileSidebar = document.getElementById('mobileSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    function openSidebar() { if (mobileSidebar) { mobileSidebar.classList.remove('translate-x-full'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; } }
-    function closeSidebar() { if (mobileSidebar) { mobileSidebar.classList.add('translate-x-full'); overlay.classList.add('hidden'); document.body.style.overflow = 'auto'; } }
-    if (hamburgerBtn) hamburgerBtn.addEventListener('click', openSidebar);
-    if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
-    if (overlay) overlay.addEventListener('click', closeSidebar);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
-  })();
-  </script>
-
+  <script src="/js/main.js"></script>
   <script src="/js/aris.js"></script>
 </body>
 </html>

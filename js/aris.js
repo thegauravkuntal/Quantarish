@@ -12,21 +12,21 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #22d3ee, #8b5cf6);
-        border: 2px solid rgba(34, 211, 238, 0.5);
-        box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
+        background: linear-gradient(135deg, #167FDB, #2E57B3);
+        border: 2px solid rgba(22, 127, 219, 0.5);
+        box-shadow: 0 0 20px rgba(22, 127, 219, 0.35);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
-      #aris-launcher:hover { transform: scale(1.08); box-shadow: 0 0 30px rgba(139, 92, 246, 0.5); }
+      #aris-launcher:hover { transform: scale(1.08); box-shadow: 0 0 30px rgba(46, 87, 179, 0.5); }
       #aris-launcher .aris-pulse {
         position: absolute;
         inset: 0;
         border-radius: 50%;
-        border: 2px solid rgba(34, 211, 238, 0.6);
+        border: 2px solid rgba(22, 127, 219, 0.6);
         animation: arisPulse 2s infinite;
       }
       @keyframes arisPulse {
@@ -42,19 +42,19 @@
         max-width: calc(100vw - 40px);
         height: 520px;
         max-height: calc(100vh - 120px);
-        background: #0a0d1f;
-        border: 1px solid rgba(34, 211, 238, 0.35);
+        background: #0c1220;
+        border: 1px solid rgba(22, 127, 219, 0.35);
         border-radius: 18px;
         overflow: hidden;
         display: none;
         flex-direction: column;
-        box-shadow: 0 0 40px rgba(34, 211, 238, 0.25);
+        box-shadow: 0 0 40px rgba(22, 127, 219, 0.25);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       }
       #aris-panel.open { display: flex; }
       #aris-header {
-        background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(139, 92, 246, 0.15));
-        border-bottom: 1px solid rgba(34, 211, 238, 0.25);
+        background: linear-gradient(135deg, rgba(22, 127, 219, 0.15), rgba(46, 87, 179, 0.15));
+        border-bottom: 1px solid rgba(22, 127, 219, 0.25);
         padding: 14px 16px;
         display: flex;
         align-items: center;
@@ -64,12 +64,12 @@
         width: 42px;
         height: 42px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #22d3ee, #8b5cf6);
+        background: linear-gradient(135deg, #167FDB, #2E57B3);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 20px;
-        color: #05060f;
+        color: #fff;
         flex-shrink: 0;
       }
       #aris-header .aris-title { flex: 1; }
@@ -94,49 +94,49 @@
         flex-direction: column;
         gap: 10px;
         scrollbar-width: thin;
-        scrollbar-color: rgba(34, 211, 238, 0.4) transparent;
+        scrollbar-color: rgba(22, 127, 219, 0.4) transparent;
       }
       #aris-messages::-webkit-scrollbar { width: 5px; }
-      #aris-messages::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.4); border-radius: 5px; }
+      #aris-messages::-webkit-scrollbar-thumb { background: rgba(22, 127, 219, 0.4); border-radius: 5px; }
       .aris-msg { max-width: 82%; padding: 10px 13px; border-radius: 14px; font-size: 13.5px; line-height: 1.5; }
-      .aris-msg.bot { align-self: flex-start; background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.2); color: #e5e7eb; border-bottom-left-radius: 4px; }
-      .aris-msg.user { align-self: flex-end; background: linear-gradient(135deg, #22d3ee, #8b5cf6); color: #05060f; font-weight: 500; border-bottom-right-radius: 4px; }
+      .aris-msg.bot { align-self: flex-start; background: rgba(22, 127, 219, 0.12); border: 1px solid rgba(22, 127, 219, 0.2); color: #e5e7eb; border-bottom-left-radius: 4px; }
+      .aris-msg.user { align-self: flex-end; background: #167FDB; color: #fff; font-weight: 500; border-bottom-right-radius: 4px; }
       .aris-msg.typing { display: flex; gap: 4px; align-items: center; }
-      .aris-msg.typing span { width: 6px; height: 6px; border-radius: 50%; background: #22d3ee; animation: arisBlink 1.2s infinite; }
+      .aris-msg.typing span { width: 6px; height: 6px; border-radius: 50%; background: #167FDB; animation: arisBlink 1.2s infinite; }
       .aris-msg.typing span:nth-child(2) { animation-delay: 0.2s; }
       .aris-msg.typing span:nth-child(3) { animation-delay: 0.4s; }
       @keyframes arisBlink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
       #aris-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; }
       .aris-chip {
-        background: rgba(139, 92, 246, 0.15);
-        border: 1px solid rgba(139, 92, 246, 0.3);
-        color: #c4b5fd;
+        background: rgba(46, 87, 179, 0.15);
+        border: 1px solid rgba(46, 87, 179, 0.3);
+        color: #93C5FD;
         font-size: 11.5px;
         padding: 5px 11px;
         border-radius: 20px;
         cursor: pointer;
         transition: background 0.2s;
       }
-      .aris-chip:hover { background: rgba(139, 92, 246, 0.3); }
-      #aris-input-row { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid rgba(34, 211, 238, 0.2); background: rgba(0, 0, 0, 0.3); }
+      .aris-chip:hover { background: rgba(46, 87, 179, 0.3); }
+      #aris-input-row { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid rgba(22, 127, 219, 0.2); background: rgba(0, 0, 0, 0.3); }
       #aris-input {
         flex: 1;
         background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(34, 211, 238, 0.25);
+        border: 1px solid rgba(22, 127, 219, 0.25);
         border-radius: 22px;
         color: #fff;
         padding: 9px 15px;
         font-size: 13px;
         outline: none;
       }
-      #aris-input:focus { border-color: rgba(34, 211, 238, 0.7); }
+      #aris-input:focus { border-color: rgba(22, 127, 219, 0.7); }
       #aris-send {
         width: 40px;
         height: 40px;
         border-radius: 50%;
         border: none;
-        background: linear-gradient(135deg, #22d3ee, #8b5cf6);
-        color: #05060f;
+        background: #167FDB;
+        color: #fff;
         cursor: pointer;
         font-size: 15px;
         flex-shrink: 0;
@@ -217,18 +217,19 @@
     const KNOWLEDGE = [
       { match: /(hello|hi|hii|hlo|hey|namaste|good (morning|afternoon|evening))/i, reply: "Hello! I'm <b>Mr Aris</b>, the AI assistant of Quantaris Group. Ask me anything about our services, pricing, careers, or the team!" },
       { match: /(who are you|what are you|your name|tum kaun|name kya)/i, reply: "I'm <b>Mr Aris</b> — your AI assistant here to help with everything about Quantaris Group. How can I help you today?" },
-      { match: /(services|service|kya karte|offer|solutions)/i, reply: "We offer: <b>Social Media Marketing</b>, <b>Performance Marketing</b>, <b>Web Development</b>, <b>App Development</b>, <b>IT Consulting</b>, <b>SaaS/Product Development</b>, <b>AI Solutions</b>, and <b>Business Strategy</b>. Visit our <a href='/pages/services.html' style='color:#67e8f9'>Services page</a> for details!" },
+      { match: /(services|service|kya karte|offer|solutions)/i, reply: "We offer: <b>AI Digital Marketing</b> (Google Ads, Meta, PPC &amp; more), <b>Web Development</b>, <b>App Development</b>, <b>IT Consulting</b>, <b>SaaS/Product Development</b>, <b>AI Solutions</b>, <b>Business Strategy</b>, and <b>UX/UI Design</b>. Visit our <a href='/pages/services.html' style='color:#7FB3FF'>Services page</a> for details!" },
+      { match: /(ux|ui|design|wireframe|prototype|user experience|interface)/i, reply: "We craft human-centred <b>UX/UI Design</b> — research, wireframes, prototypes, high-fidelity interfaces, and design systems that convert. See our <a href='/pages/services.html#ux-ui' style='color:#7FB3FF'>UX/UI Design service</a>!" },
       { match: /(price|pricing|cost|charge|fees|rate|kitna|costing)/i, reply: "Pricing depends on your project scope. For a free consultation, reach us at <b>info@quantaris.com</b> or call <b>+91 87911 90999</b> — we'll share a tailored quote!" },
-      { match: /(website|web development|web design|site)/i, reply: "We build fast, modern, and SEO-friendly websites — corporate sites, e-commerce, and web apps. Check our <a href='/pages/services.html' style='color:#67e8f9'>Services page</a>!" },
+      { match: /(website|web development|web design|site)/i, reply: "We build fast, modern, and SEO-friendly websites — corporate sites, e-commerce, and web apps. Check our <a href='/pages/services.html' style='color:#7FB3FF'>Services page</a>!" },
       { match: /(app|mobile|android|ios|application)/i, reply: "We build native (iOS/Android) and cross-platform apps with Flutter & React Native. Want one? Email <b>info@quantaris.com</b>!" },
       { match: /(ai|artificial|chatbot|machine learning)/i, reply: "We create AI-powered solutions — chatbots, automation, and data tools — to make your business smarter. Tell me about your idea!" },
-      { match: /(marketing|social media|seo|ads|instagram|facebook)/i, reply: "Our marketing team handles social media, SEO, and performance ads (Google & Meta) to grow your brand. See our <a href='/pages/services.html' style='color:#67e8f9'>Services page</a>!" },
-      { match: /(contact|phone|number|call|email|mail|reach)/i, reply: "You can reach us at:<br>&#9993; <b>info@quantaris.com</b><br>&#9742; <b>+91 87911 90999</b><br>Visit the <a href='/pages/contact.html' style='color:#67e8f9'>Contact page</a>!" },
+      { match: /(marketing|social media|seo|ads|instagram|facebook)/i, reply: "Our AI Digital Marketing suite covers Google Ads, Meta, PPC, SEO, and social media — one engine for all your paid &amp; organic growth. See our <a href='/pages/services.html#ai-digital-marketing' style='color:#7FB3FF'>AI Digital Marketing service</a>!" },
+      { match: /(contact|phone|number|call|email|mail|reach)/i, reply: "You can reach us at:<br>&#9993; <b>info@quantaris.com</b><br>&#9742; <b>+91 87911 90999</b><br>Careers: <b>hr@quantarisgroup.com</b><br>Legal: <b>legal@quantarisgroup.com</b><br>Visit the <a href='/pages/contact.html' style='color:#7FB3FF'>Contact page</a>!" },
       { match: /(address|location|office|where|visit|khahan)/i, reply: "Our office: <b>A Radha Vihar, Kamla Nagar, Agra, UP 282005</b>. Feel free to visit or message us!" },
-      { match: /(team|member|founder|yash|sachin|gaurav|who works)/i, reply: "Our leaders: <b>Yash Raj Singh</b> (Founder &amp; President), <b>Sachin Arora</b> (Co-Founder &amp; Software Developer), and <b>Gaurav</b> (Managing Partner). Meet them on the <a href='/pages/about.html' style='color:#67e8f9'>About page</a>!" },
-      { match: /(job|career|vacancy|hiring|intern|apply|role|position|opening)/i, reply: "We're hiring! Open roles: <b>SEO Specialist</b>, <b>HR Intern</b>, <b>Project Coordinator</b>, <b>Business Development Manager</b> &amp; <b>Executive</b>. Check the <a href='/pages/career.html' style='color:#67e8f9'>Career page</a>!" },
-      { match: /(about|company|quantaris|group)/i, reply: "Quantaris Group is an IT consultancy delivering AI solutions, web & app development, digital marketing, and business strategy. Learn more on the <a href='/pages/about.html' style='color:#67e8f9'>About page</a>!" },
-      { match: /(blog|article|post|news)/i, reply: "Check our latest insights on the <a href='/pages/blog.html' style='color:#67e8f9'>Blog page</a> — trends on IT, development, and AI!" },
+      { match: /(team|member|founder|yash|sachin|gaurav|bhagwan|who works)/i, reply: "Our leaders: <b>Yash Raj Singh</b> (Founder &amp; President), <b>Sachin Arora</b> (Co-Founder &amp; Software Developer), <b>Gaurav</b> (Managing Partner), and <b>Bhagwan Singh</b> (Co-Founder). Meet them on the <a href='/pages/about.html' style='color:#7FB3FF'>About page</a>!" },
+      { match: /(job|career|vacancy|hiring|intern|apply|role|position|opening)/i, reply: "We're hiring! Open roles: <b>SEO Specialist</b>, <b>HR Intern</b>, <b>Project Coordinator</b>, <b>Business Development Manager</b> &amp; <b>Executive</b>. Check the <a href='/pages/career.html' style='color:#7FB3FF'>Career page</a>!" },
+      { match: /(about|company|quantaris|group)/i, reply: "Quantaris Group is an IT consultancy delivering AI solutions, web & app development, digital marketing, and business strategy. Learn more on the <a href='/pages/about.html' style='color:#7FB3FF'>About page</a>!" },
+      { match: /(blog|article|post|news)/i, reply: "Check our latest insights on the <a href='/pages/blog.html' style='color:#7FB3FF'>Blog page</a> — trends on IT, development, and AI!" },
       { match: /(thank|thanks|dhanyavad|shukriya)/i, reply: "You're welcome! Happy to help. Anything else you'd like to know? 😊" },
       { match: /(bye|goodbye|ta-ta)/i, reply: "Goodbye! Feel free to chat with me anytime. Have a great day! 👋" }
     ];
@@ -236,7 +237,7 @@
     const FALLBACKS = [
       "Good question! For that, I'd suggest reaching out to our team at <b>info@quantaris.com</b> or <b>+91 87911 90999</b> — they'll give you a perfect answer!",
       "Hmm, I'm not 100% sure about that. Let me connect you with our team — email <b>info@quantaris.com</b> and we'll respond quickly!",
-      "I don't have that info handy, but our team at Quantaris Group can help! Email <b>info@quantaris.com</b> or visit our <a href='/pages/contact.html' style='color:#67e8f9'>Contact page</a>."
+      "I don't have that info handy, but our team at Quantaris Group can help! Email <b>info@quantaris.com</b> or visit our <a href='/pages/contact.html' style='color:#7FB3FF'>Contact page</a>."
     ];
 
     function getReply(text) {

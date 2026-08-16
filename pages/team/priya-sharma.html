@@ -5,614 +5,235 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Priya Sharma · Legal & Compliance Executive · Quantaris Group</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-body {
-      background: #05060f;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* ===== GALAXY BACKGROUND ===== */
-    .galaxy-bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(34,211,238,0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(59,130,246,0.04) 0%, transparent 50%),
-        #05060f;
-    }
-
-    /* Neural network canvas */
-    #neuralCanvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Floating orbs */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(1px);
-      animation: orbFloat linear infinite alternate;
-    }
-    .orb-1 {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(34,211,238,0.08), transparent 70%);
-      top: 10%; left: -5%;
-      animation-duration: 20s;
-    }
-    .orb-2 {
-      width: 250px; height: 250px;
-      background: radial-gradient(circle, rgba(139,92,246,0.08), transparent 70%);
-      top: 60%; right: -5%;
-      animation-duration: 25s;
-      animation-delay: -5s;
-    }
-    .orb-3 {
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(59,130,246,0.06), transparent 70%);
-      bottom: 10%; left: 30%;
-      animation-duration: 18s;
-      animation-delay: -10s;
-    }
-    @keyframes orbFloat {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(60px, -40px) scale(1.2); }
-      100% { transform: translate(-30px, 50px) scale(0.9); }
-    }
-
-    /* Wireframe shapes */
-    .wireframe {
-      position: fixed;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.04;
-    }
-    .wireframe-hex {
-      width: 120px; height: 120px;
-      border: 1px solid rgba(34,211,238,0.3);
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      top: 15%; right: 10%;
-      animation: wireSpin 30s linear infinite;
-    }
-    .wireframe-diamond {
-      width: 80px; height: 80px;
-      border: 1px solid rgba(139,92,246,0.3);
-      transform: rotate(45deg);
-      bottom: 20%; left: 8%;
-      animation: wireSpin 25s linear infinite reverse;
-    }
-    .wireframe-circle {
-      width: 150px; height: 150px;
-      border: 1px solid rgba(59,130,246,0.2);
-      border-radius: 50%;
-      top: 50%; left: 50%;
-      animation: wirePulse 8s ease-in-out infinite;
-    }
-    @keyframes wireSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes wirePulse {
-      0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.04; }
-      50% { transform: translate(-50%,-50%) scale(1.3); opacity: 0.08; }
-    }
-
-    /* Grid overlay */
-    .grid-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(34,211,238,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34,211,238,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* Star field */
-    .stars-layer {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .star {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 6px 2px rgba(255,255,255,0.6);
-      animation: floatStar linear infinite alternate;
-      opacity: 0.7;
-    }
-    @keyframes floatStar {
-      0% { transform: translate(0,0) scale(1); opacity: 0.3; }
-      100% { transform: translate(40px,-30px) scale(1.3); opacity: 1; }
-    }
-    .star-slow { animation-duration: 9s; animation-iteration-count: infinite; animation-direction: alternate; }
-    .star-fast { animation-duration: 5s; animation-iteration-count: infinite; animation-direction: alternate-reverse; }
-
-    /* Card hover */
-    .team-card {
-      background: rgba(10, 12, 25, 0.7);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 20px -8px rgba(0,0,0,0.8);
-    }
-    .team-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      border-color: rgba(34,211,238,0.3);
-      box-shadow: 0 20px 40px -10px #000000, 0 0 20px 0 rgba(34,211,238,0.15);
-    }
-    .team-card.active {
-      border-color: rgba(34,211,238,0.6);
-      box-shadow: 0 0 25px 0 rgba(34,211,238,0.2);
-    }
-    .glow-text { text-shadow: 0 0 15px rgba(34,211,238,0.4); }
-    .icon-float { animation: iconPulse 3s infinite alternate; }
-    @keyframes iconPulse {
-      0% { transform: scale(1) rotate(0deg); }
-      100% { transform: scale(1.1) rotate(3deg); }
-    }
-    .fade-section { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
-    .fade-section.visible { opacity: 1; transform: translateY(0); }
-    .nav-glass {
-      background: rgba(5,6,15,0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(34,211,238,0.08);
-    }
-    #mobileSidebar {
-      background-color: #05060f !important;
-      background: #05060f !important;
-      box-shadow: -5px 0 30px rgba(0,0,0,0.95) !important;
-      border-left: 1px solid rgba(34,211,238,0.08);
-    }
-    #mobileSidebar a:hover { background: rgba(34,211,238,0.08) !important; }
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #05060f; }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #22d3ee, #8b5cf6); border-radius: 6px; }
-</style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#EAF3FE', 100: '#D6E7FD', 200: '#AECDFB', 300: '#7CB0F7', 400: '#4D94EF', 500: '#167FDB', 600: '#0F6BC7', 700: '#0A4FA8', 800: '#0B3C8C', 900: '#0B2F7A' }
+          },
+          fontFamily: {
+            display: ['Sora', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
-<body>
+<body class="bg-[#0a0e17] text-slate-200 antialiased">
 
-  <!-- ===== GALAXY BACKGROUND ===== -->
-  <div class="galaxy-bg"></div>
-  <canvas id="neuralCanvas"></canvas>
-  <div class="grid-overlay"></div>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="wireframe wireframe-hex"></div>
-  <div class="wireframe wireframe-diamond"></div>
-  <div class="wireframe wireframe-circle"></div>
-  <div id="star-container" class="stars-layer"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="nav-glass fixed w-full z-50 top-0 left-0 py-3 px-6 flex justify-between items-center">
-
-    <!-- Brand -->
-    <div class="text-2xl font-bold tracking-wider text-white flex items-center gap-2">
-      <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-14 h-14 rounded-lg object-cover border border-cyan-400/30" />
-      <span class="bg-gradient-to-r from-cyan-300 via-violet-400 to-purple-500 bg-clip-text text-transparent">
-        QUANTARIS GROUP
-      </span>
-    </div>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex space-x-8 text-gray-300 font-medium">
-      <a href="/index.html" class="hover:text-cyan-300 transition">Home</a>
-      <a href="/pages/about.html" class="text-cyan-300 transition">About</a>
-      <a href="/pages/services.html" class="hover:text-cyan-300 transition">Services</a>
-      <a href="/pages/career.html" class="hover:text-cyan-300 transition">Career</a>
-      <a href="/pages/portfolio.html" class="hover:text-cyan-300 transition">Portfolio</a>
-      <a href="/pages/blog.html" class="hover:text-cyan-300 transition">Blog</a>
-      <a href="/pages/contact.html" class="hover:text-cyan-300 transition">Contact Us</a>
-    </div>
-
-    <!-- Right -->
-    <div class="flex items-center gap-4">
-
-      <!-- Call Button -->
-      <a href="tel:+918791190999"
-        class="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-semibold hover:brightness-110 transition">
-        <i class="fas fa-phone-alt"></i>
-        Call Now
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 md:h-[72px] flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-3 shrink-0">
+        <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-10 h-10 rounded-lg object-cover ring-1 ring-white/10" />
+        <span class="font-display text-lg font-bold tracking-tight text-white hidden sm:block">QUANTARIS <span class="text-brand-400">GROUP</span></span>
       </a>
-
-      <!-- Hamburger -->
-      <button id="hamburgerBtn"
-        class="md:hidden text-gray-300 hover:text-cyan-300 text-2xl transition">
-        <i class="fas fa-bars"></i>
-      </button>
-
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/pages/about.html" class="nav-link active">About</a>
+        <a href="/pages/services.html" class="nav-link">Services</a>
+        <a href="/pages/career.html" class="nav-link">Careers</a>
+        <a href="/pages/portfolio.html" class="nav-link">Portfolio</a>
+        <a href="/pages/blog.html" class="nav-link">Blog</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="tel:+918791190999" class="btn btn-primary btn-sm hidden md:inline-flex"><i class="fas fa-phone"></i> Call Now</a>
+        <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-lg border border-white/10 text-slate-300 hover:text-white grid place-items-center text-lg" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+      </div>
     </div>
-
   </nav>
 
-  <!-- ===== MOBILE SIDEBAR ===== -->
-  <div id="sidebarOverlay"
-    class="fixed inset-0 bg-black/60 z-[9998] hidden md:hidden">
-  </div>
-
-  <div id="mobileSidebar"
-    class="fixed top-0 right-0 h-screen w-[280px] bg-black text-white
-    transform translate-x-full transition-transform duration-300 ease-in-out
-    z-[9999] md:hidden shadow-2xl">
-
-    <!-- Sidebar Header -->
-    <div class="flex items-center justify-between p-5 border-b border-gray-800 bg-black">
-      <span class="text-cyan-400 font-bold text-lg tracking-wider">MENU</span>
-      <button id="closeSidebarBtn"
-        class="text-gray-400 hover:text-cyan-300 text-2xl transition">
-        <i class="fas fa-times"></i>
-      </button>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] hidden lg:hidden"></div>
+  <aside id="mobileMenu" class="fixed top-0 right-0 h-full w-72 bg-[#0c1220] border-l border-white/10 z-[100] transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col">
+    <div class="flex items-center justify-between px-5 h-16 border-b border-white/10">
+      <span class="font-display font-bold text-white">Menu</span>
+      <button id="menuClose" class="w-9 h-9 rounded-lg border border-white/10 text-slate-300 hover:text-white" aria-label="Close menu"><i class="fas fa-times"></i></button>
     </div>
-
-    <!-- Sidebar Links -->
-    <div class="flex flex-col bg-black h-full px-5 py-6">
-
-      <a href="/index.html"
-        class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
-        <i class="fas fa-home text-cyan-400 mr-3"></i>
-        Home
-      </a>
-
-      <a href="/pages/about.html"
-        class="flex items-center py-4 px-3 text-cyan-300 bg-cyan-400/10 rounded-lg transition border-b border-gray-800">
-        <i class="fas fa-users text-cyan-400 mr-3"></i>
-        About
-      </a>
-
-      <a href="/pages/services.html"
-        class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
-        <i class="fas fa-cogs text-cyan-400 mr-3"></i>
-        Services
-      </a>
-
-      <a href="/pages/career.html"
-        class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
-        <i class="fas fa-briefcase text-cyan-400 mr-3"></i>
-        Career
-      </a>
-
-      <a href="/pages/portfolio.html"
-        class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
-        <i class="fas fa-images text-cyan-400 mr-3"></i>
-        Portfolio
-      </a>
-
-      <a href="/pages/blog.html"
-        class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
-        <i class="fas fa-blog text-cyan-400 mr-3"></i>
-        Blog
-      </a>
-
-      <a href="/pages/contact.html"
-        class="flex items-center py-4 px-3 text-gray-200 hover:text-cyan-300 hover:bg-gray-900 rounded-lg transition border-b border-gray-800">
-        <i class="fas fa-envelope text-cyan-400 mr-3"></i>
-        Contact Us
-      </a>
-
-      <!-- Call Button -->
-      <a href="tel:+918791190999"
-        class="mt-8 flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-cyan-400 to-violet-500 text-white font-bold rounded-full hover:brightness-110 transition">
-        <i class="fas fa-phone-alt"></i>
-        Call Now
-      </a>
-
+    <div class="p-4 space-y-1 overflow-y-auto">
+      <a href="/index.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-home w-5 text-center"></i> Home</a>
+      <a href="/pages/about.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-brand-300 bg-brand-500/10 font-medium"><i class="fas fa-users w-5 text-center"></i> About</a>
+      <a href="/pages/services.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-cogs w-5 text-center"></i> Services</a>
+      <a href="/pages/career.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-briefcase w-5 text-center"></i> Careers</a>
+      <a href="/pages/portfolio.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-images w-5 text-center"></i> Portfolio</a>
+      <a href="/pages/blog.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-blog w-5 text-center"></i> Blog</a>
+      <a href="/pages/contact.html" class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 font-medium"><i class="fas fa-envelope w-5 text-center"></i> Contact</a>
     </div>
+    <div class="p-4 mt-auto border-t border-white/10">
+      <a href="tel:+918791190999" class="btn btn-primary w-full justify-center"><i class="fas fa-phone"></i> Call Now</a>
+    </div>
+  </aside>
 
-  </div>
-
-  <!-- ===== PROFILE HERO ===== -->
-  <section class="relative min-h-[55vh] flex items-center justify-center px-6 pt-32 pb-16 z-10">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="w-40 h-40 bg-cyan-400/20 rounded-full mx-auto flex items-center justify-center text-6xl text-cyan-300 border-2 border-cyan-400/40 mb-6">
+  <!-- ================= PROFILE HERO ================= -->
+  <section class="relative pt-36 pb-10 px-5 sm:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="w-40 h-40 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/40 text-6xl text-brand-300 shadow-[0_0_50px_rgba(22,127,219,0.2)] reveal">
         <i class="fas fa-scale-balanced"></i>
       </div>
-      <span class="inline-block px-4 py-1.5 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm font-medium tracking-wider mb-4 backdrop-blur-sm">
-        <i class="fas fa-scale-balanced mr-2"></i> legal &amp; compliance
-      </span>
-      <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight">
-        <span class="glow-text text-cyan-300">Priya Sharma</span>
-      </h1>
-      <p class="text-gray-400 text-lg mt-3">Legal &amp; Compliance Executive · Quantaris Group</p>
-      <div class="flex justify-center gap-3 mt-5">
-        <a href="#" class="w-10 h-10 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="w-10 h-10 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-twitter"></i></a>
+      <span class="section-badge reveal reveal-delay-1 mt-8"><i class="fas fa-scale-balanced"></i> Legal &amp; Compliance</span>
+      <h1 class="reveal reveal-delay-2 font-display text-4xl md:text-6xl font-extrabold text-white leading-tight mt-7">Priya <span class="text-gradient">Sharma</span></h1>
+      <p class="reveal reveal-delay-2 text-slate-400 text-lg mt-3">Legal &amp; Compliance Executive · Quantaris Group</p>
+      <div class="flex justify-center gap-3 mt-6 reveal reveal-delay-3">
+        <a href="https://www.linkedin.com/company/quantaris-group/posts/?feedView=all" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- ===== ABOUT PROFILE ===== -->
-  <section class="relative z-10 py-16 px-6 fade-section">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-10">
-        <span class="text-cyan-400 text-sm font-semibold tracking-widest"><i class="fas fa-user mr-2"></i> about</span>
-        <h2 class="text-4xl font-bold text-white mt-3">The guardian of <span class="text-cyan-300 glow-text">trust &amp; compliance</span></h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-violet-500 mx-auto mt-4 rounded-full"></div>
-      </div>
-      <div class="space-y-5">
-        <p class="text-gray-300 leading-relaxed">
-          Priya Sharma ensures that Quantaris Group operates with complete legal integrity and compliance. As our Legal &amp; Compliance Executive, she manages contracts, regulatory requirements, and risk across every engagement.
-        </p>
-        <p class="text-gray-300 leading-relaxed">
-          Her meticulous, detail-oriented approach protects both the company and its clients. Priya reviews agreements, safeguards data privacy and security, and makes sure every partnership is built on a clear, fair, and transparent foundation.
-        </p>
-        <p class="text-gray-300 leading-relaxed">
-          With a strong understanding of compliance across international markets, Priya gives clients the confidence that their projects are handled with professionalism and full legal diligence.
-        </p>
+  <!-- ================= ABOUT PROFILE ================= -->
+  <section class="section-pad pt-8 px-5 sm:px-8">
+    <div class="max-w-3xl mx-auto">
+      <div class="card p-8 md:p-12 reveal">
+        <span class="text-brand-400 text-xs font-semibold tracking-widest"><i class="fas fa-user mr-2"></i> ABOUT</span>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-4">The guardian of <span class="text-brand-300">trust &amp; compliance</span></h2>
+        <div class="w-16 h-0.5 bg-gradient-to-r from-brand-400 to-brand-600 mt-4 rounded-full"></div>
+        <div class="space-y-5 mt-8">
+          <p class="text-slate-300 leading-relaxed">
+            Priya Sharma ensures that Quantaris Group operates with complete legal integrity and compliance. As our Legal &amp; Compliance Executive, she manages contracts, regulatory requirements, and risk across every engagement.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            Her meticulous, detail-oriented approach protects both the company and its clients. Priya reviews agreements, safeguards data privacy and security, and makes sure every partnership is built on a clear, fair, and transparent foundation.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            With a strong understanding of compliance across international markets, Priya gives clients the confidence that their projects are handled with professionalism and full legal diligence.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== MEET OUR TEAM ===== -->
-  <section class="relative z-10 py-16 px-6 fade-section">
+  <!-- ================= MEET OUR TEAM ================= -->
+  <section class="section-pad px-5 sm:px-8">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <span class="text-cyan-400 text-sm font-semibold tracking-widest"><i class="fas fa-user-friends mr-2"></i> meet our team</span>
-        <h2 class="text-4xl font-bold text-white mt-3">More <span class="text-cyan-300 glow-text">members</span></h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-violet-500 mx-auto mt-4 rounded-full"></div>
-        <p class="text-gray-300 max-w-2xl mx-auto mt-4">Click any member to view their full profile.</p>
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="section-badge"><i class="fas fa-user-friends"></i> Meet Our Team</span>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-white mt-5">More <span class="text-brand-300">members</span></h2>
+        <p class="text-slate-400 mt-4">Click any member to view their full profile.</p>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <a href="/pages/team/anisha.html" class="team-card rounded-2xl p-6 text-white text-center">
-          <div class="w-20 h-20 bg-cyan-400/20 rounded-full mx-auto flex items-center justify-center text-3xl text-cyan-300 mb-3 border-2 border-cyan-400/30"><i class="fas fa-user-tie"></i></div>
-          <h3 class="font-bold">Anisha</h3>
-          <p class="text-cyan-300 text-xs font-semibold mt-1">HR</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 mt-14">
+        <a href="/pages/team/anisha.html" class="card p-6 text-center group reveal">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-user-tie"></i></div>
+          <h3 class="font-display font-bold text-white">Anisha</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">HR</p>
         </a>
-        <a href="/pages/team/priya-sharma.html" class="team-card active rounded-2xl p-6 text-white text-center">
-          <div class="w-20 h-20 bg-cyan-400/20 rounded-full mx-auto flex items-center justify-center text-3xl text-cyan-300 mb-3 border-2 border-cyan-400/30"><i class="fas fa-scale-balanced"></i></div>
-          <h3 class="font-bold">Priya Sharma</h3>
-          <p class="text-cyan-300 text-xs font-semibold mt-1">Legal &amp; Compliance Executive</p>
+        <a href="/pages/team/priya-sharma.html" class="card p-6 text-center group reveal reveal-delay-1 ring-1 ring-brand-500/50 bg-brand-500/5">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/15 border-2 border-brand-500/50 text-2xl text-brand-300 mb-3"><i class="fas fa-scale-balanced"></i></div>
+          <h3 class="font-display font-bold text-white">Priya Sharma</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Legal &amp; Compliance</p>
         </a>
-        <a href="/pages/team/rahul-verma.html" class="team-card rounded-2xl p-6 text-white text-center">
-          <div class="w-20 h-20 bg-cyan-400/20 rounded-full mx-auto flex items-center justify-center text-3xl text-cyan-300 mb-3 border-2 border-cyan-400/30"><i class="fas fa-diagram-project"></i></div>
-          <h3 class="font-bold">Rahul Verma</h3>
-          <p class="text-cyan-300 text-xs font-semibold mt-1">Project Manager</p>
+        <a href="/pages/team/rahul-verma.html" class="card p-6 text-center group reveal reveal-delay-2">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-diagram-project"></i></div>
+          <h3 class="font-display font-bold text-white">Rahul Verma</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Project Manager</p>
         </a>
-        <a href="/pages/team/arjun-mehta.html" class="team-card rounded-2xl p-6 text-white text-center">
-          <div class="w-20 h-20 bg-cyan-400/20 rounded-full mx-auto flex items-center justify-center text-3xl text-cyan-300 mb-3 border-2 border-cyan-400/30"><i class="fas fa-chart-line"></i></div>
-          <h3 class="font-bold">Arjun Mehta</h3>
-          <p class="text-cyan-300 text-xs font-semibold mt-1">Sales Head</p>
+        <a href="/pages/team/arjun-mehta.html" class="card p-6 text-center group reveal">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-chart-line"></i></div>
+          <h3 class="font-display font-bold text-white">Arjun Mehta</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Sales Head</p>
         </a>
-        <a href="/pages/team/neha-gupta.html" class="team-card rounded-2xl p-6 text-white text-center">
-          <div class="w-20 h-20 bg-cyan-400/20 rounded-full mx-auto flex items-center justify-center text-3xl text-cyan-300 mb-3 border-2 border-cyan-400/30"><i class="fas fa-code"></i></div>
-          <h3 class="font-bold">Neha Gupta</h3>
-          <p class="text-cyan-300 text-xs font-semibold mt-1">Software Engineer</p>
+        <a href="/pages/team/neha-gupta.html" class="card p-6 text-center group reveal reveal-delay-1">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-code"></i></div>
+          <h3 class="font-display font-bold text-white">Neha Gupta</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Software Engineer</p>
         </a>
-        <a href="/pages/team/rohan-khanna.html" class="team-card rounded-2xl p-6 text-white text-center">
-          <div class="w-20 h-20 bg-cyan-400/20 rounded-full mx-auto flex items-center justify-center text-3xl text-cyan-300 mb-3 border-2 border-cyan-400/30"><i class="fas fa-bullhorn"></i></div>
-          <h3 class="font-bold">Rohan Khanna</h3>
-          <p class="text-cyan-300 text-xs font-semibold mt-1">Digital Marketing Manager</p>
+        <a href="/pages/team/rohan-khanna.html" class="card p-6 text-center group reveal reveal-delay-2">
+          <div class="w-16 h-16 mx-auto rounded-full grid place-items-center bg-brand-500/10 border-2 border-brand-500/30 text-2xl text-brand-300 mb-3"><i class="fas fa-bullhorn"></i></div>
+          <h3 class="font-display font-bold text-white">Rohan Khanna</h3>
+          <p class="text-brand-300 text-xs font-semibold mt-1">Digital Marketing</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="relative z-10 border-t border-white/5 bg-black">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+  <!-- ================= CTA ================= -->
+  <section class="section-pad pt-0 px-5 sm:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="card p-10 md:p-14 text-center relative overflow-hidden reveal">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-brand-500/15 blur-[90px] rounded-full pointer-events-none"></div>
+        <div class="relative">
+          <i class="fas fa-handshake text-4xl text-brand-300 mb-5"></i>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-white">Let's build <span class="text-brand-300">what's next</span></h2>
+          <p class="text-slate-400 max-w-xl mx-auto mt-4">Ready to bring your digital vision to life? Talk to our team and turn your goals into results.</p>
+          <a href="/pages/contact.html" class="btn btn-primary mt-8">Let's talk <i class="fas fa-arrow-right text-sm"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="relative border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
-          <div class="flex items-center gap-2 mb-4">
-            <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-8 h-8 rounded-full object-cover border border-cyan-400/30" />
-            <span class="text-xl font-bold text-white">QUANTARIS GROUP</span>
-          </div>
-          <p class="text-gray-400 text-sm leading-relaxed">Empowering businesses with cutting-edge IT consulting, digital transformation, and innovative technology solutions worldwide.</p>
-          <div class="flex gap-3 mt-5">
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-github"></i></a>
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="w-9 h-9 bg-cyan-400/10 rounded-full flex items-center justify-center text-cyan-300 hover:bg-cyan-400/20 transition"><i class="fab fa-instagram"></i></a>
+          <a href="/index.html" class="flex items-center gap-3 mb-4">
+            <img src="/imgs/logo.jpg" alt="Quantaris Group" class="w-9 h-9 rounded-lg object-cover ring-1 ring-white/10" />
+            <span class="font-display font-bold text-white">QUANTARIS GROUP</span>
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed">Empowering businesses with cutting-edge IT consulting, digital transformation, and innovative technology solutions worldwide.</p>
+          <div class="flex gap-2.5 mt-5">
+            <a href="https://www.linkedin.com/company/quantaris-group/posts/?feedView=all" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 grid place-items-center text-slate-300 hover:text-white hover:border-brand-500/60 hover:bg-brand-500/10 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         <div>
-          <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+          <h4 class="font-display font-bold text-white mb-5">Quick Links</h4>
           <ul class="space-y-3 text-sm">
-            <li><a href="/index.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Home</a></li>
-            <li><a href="/pages/about.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>About Us</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Services</a></li>
-            <li><a href="/pages/career.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Careers</a></li>
-            <li><a href="/pages/portfolio.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Portfolio</a></li>
-            <li><a href="/pages/blog.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Blog</a></li>
-            <li><a href="/pages/contact.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Contact Us</a></li>
+            <li><a href="/index.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Home</a></li>
+            <li><a href="/pages/about.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>About Us</a></li>
+            <li><a href="/pages/services.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Services</a></li>
+            <li><a href="/pages/career.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Careers</a></li>
+            <li><a href="/pages/portfolio.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Portfolio</a></li>
+            <li><a href="/pages/blog.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Blog</a></li>
+            <li><a href="/pages/contact.html" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Contact Us</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="text-white font-bold text-lg mb-4">Our Services</h4>
+          <h4 class="font-display font-bold text-white mb-5">Our Services</h4>
           <ul class="space-y-3 text-sm">
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Social Media Marketing</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Performance Marketing</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>Web Development</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>App Development</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>IT Consulting</a></li>
-            <li><a href="/pages/services.html" class="text-gray-400 hover:text-cyan-300 transition"><i class="fas fa-chevron-right text-cyan-400 mr-2 text-xs"></i>AI Agents</a></li>
+            <li><a href="/pages/services.html#ai-digital-marketing" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>AI Digital Marketing</a></li>
+            <li><a href="/pages/services.html#web-dev" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>Web Development</a></li>
+            <li><a href="/pages/services.html#app-dev" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>App Development</a></li>
+            <li><a href="/pages/services.html#it-consulting" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>IT Consulting</a></li>
+            <li><a href="/pages/services.html#ai-agents" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>AI Agents</a></li>
+            <li><a href="/pages/services.html#ux-ui" class="text-slate-400 hover:text-brand-300 transition"><i class="fas fa-chevron-right text-brand-500 mr-2 text-xs"></i>UX/UI Design</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="text-white font-bold text-lg mb-4">Contact Us</h4>
+          <h4 class="font-display font-bold text-white mb-5">Contact Us</h4>
           <ul class="space-y-4 text-sm">
-            <li class="flex items-start gap-3">
-              <i class="fas fa-phone-alt text-cyan-400 mt-1"></i>
-              <div><p class="text-gray-400">Call Us</p><a href="tel:+918791190999" class="text-white hover:text-cyan-300 transition">+91 87911 90999</a></div>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-envelope text-cyan-400 mt-1"></i>
-              <div><p class="text-gray-400">Email Us</p><a href="mailto:info@quantaris.com" class="text-white hover:text-cyan-300 transition">info@quantaris.com</a></div>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-map-marker-alt text-cyan-400 mt-1"></i>
-              <div><p class="text-gray-400">Office Address</p><p class="text-white">A Radha Vihar, Kamla Nagar,<br>Agra, UP 282005</p></div>
-            </li>
+            <li class="flex items-start gap-3"><i class="fas fa-phone-alt text-brand-400 mt-1"></i><div><p class="text-slate-400">Call Us</p><a href="tel:+918791190999" class="text-slate-200 hover:text-brand-300 transition">+91 87911 90999</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Email Us</p><a href="mailto:info@quantaris.com" class="text-slate-200 hover:text-brand-300 transition">info@quantaris.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Careers</p><a href="mailto:hr@quantarisgroup.com" class="text-slate-200 hover:text-brand-300 transition">hr@quantarisgroup.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-envelope text-brand-400 mt-1"></i><div><p class="text-slate-400">Legal</p><a href="mailto:legal@quantarisgroup.com" class="text-slate-200 hover:text-brand-300 transition">legal@quantarisgroup.com</a></div></li>
+            <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-brand-400 mt-1"></i><div><p class="text-slate-400">Office Address</p><p class="text-slate-200">A Radha Vihar, Kamla Nagar,<br />Agra, UP 282005</p></div></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="border-t border-white/5 py-5 px-6">
-      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+    <div class="border-t border-white/10 py-5">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
         <p>&copy; 2026 Quantaris Group. All rights reserved.</p>
-        <div class="flex gap-6 mt-3 md:mt-0">
-          <a href="#" class="hover:text-cyan-300 transition">Privacy Policy</a>
-          <a href="#" class="hover:text-cyan-300 transition">Terms of Service</a>
-          <a href="#" class="hover:text-cyan-300 transition">Sitemap</a>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-brand-300 transition">Privacy Policy</a>
+          <a href="#" class="hover:text-brand-300 transition">Terms of Service</a>
+          <a href="#" class="hover:text-brand-300 transition">Sitemap</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript: galaxy background + stars + neural network + scroll reveal -->
-  <script>
-  (function() {
-    // ---------- NEURAL NETWORK CANVAS ----------
-    const canvas = document.getElementById('neuralCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const PARTICLE_COUNT = 70;
-    const CONNECT_DISTANCE = 150;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 2 + 1;
-        this.color = Math.random() > 0.5 ? 'rgba(34,211,238,' : 'rgba(139,92,246,';
-        this.pulse = Math.random() * Math.PI * 2;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.pulse += 0.02;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-      draw() {
-        const alpha = 0.3 + Math.sin(this.pulse) * 0.2;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color + alpha + ')';
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius + 3, 0, Math.PI * 2);
-        ctx.fillStyle = this.color + (alpha * 0.3) + ')';
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
-
-    function drawConnections() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECT_DISTANCE) {
-            const alpha = (1 - dist / CONNECT_DISTANCE) * 0.15;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(34,211,238,' + alpha + ')';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function animateNeural() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      drawConnections();
-      requestAnimationFrame(animateNeural);
-    }
-    animateNeural();
-
-    // ---------- STARS GENERATION ----------
-    const container = document.getElementById('star-container');
-    for (let i = 0; i < 150; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      const size = Math.random() * 3 + 1;
-      star.style.width = size + 'px';
-      star.style.height = size + 'px';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 6 + 4) + 's';
-      star.style.animationDelay = (Math.random() * 5) + 's';
-      star.style.opacity = Math.random() * 0.6 + 0.3;
-      const colors = ['rgba(34,211,238,0.4)', 'rgba(139,92,246,0.4)', 'rgba(255,255,255,0.5)'];
-      star.style.boxShadow = '0 0 8px 2px ' + colors[Math.floor(Math.random() * colors.length)];
-      container.appendChild(star);
-    }
-    for (let i = 0; i < 25; i++) {
-      const big = document.createElement('div');
-      big.classList.add('star', 'star-slow');
-      const size = Math.random() * 5 + 3;
-      big.style.width = size + 'px';
-      big.style.height = size + 'px';
-      big.style.left = Math.random() * 100 + '%';
-      big.style.top = Math.random() * 100 + '%';
-      big.style.animationDuration = (Math.random() * 12 + 10) + 's';
-      big.style.animationDelay = (Math.random() * 8) + 's';
-      big.style.boxShadow = '0 0 20px 6px rgba(34,211,238,0.2)';
-      big.style.opacity = 0.2 + Math.random() * 0.3;
-      container.appendChild(big);
-    }
-
-    // ---------- SCROLL REVEAL ----------
-    const sections = document.querySelectorAll('.fade-section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    sections.forEach(section => observer.observe(section));
-    setTimeout(() => {
-      sections.forEach(section => {
-        if (section.getBoundingClientRect().top < window.innerHeight * 0.85) section.classList.add('visible');
-      });
-    }, 200);
-
-    // ---------- SIDEBAR TOGGLE ----------
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
-    const mobileSidebar = document.getElementById('mobileSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    function openSidebar() { if (mobileSidebar) { mobileSidebar.classList.remove('translate-x-full'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; } }
-    function closeSidebar() { if (mobileSidebar) { mobileSidebar.classList.add('translate-x-full'); overlay.classList.add('hidden'); document.body.style.overflow = 'auto'; } }
-    if (hamburgerBtn) hamburgerBtn.addEventListener('click', openSidebar);
-    if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
-    if (overlay) overlay.addEventListener('click', closeSidebar);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
-  })();
-  </script>
-
+  <script src="/js/main.js"></script>
   <script src="/js/aris.js"></script>
 </body>
 </html>
