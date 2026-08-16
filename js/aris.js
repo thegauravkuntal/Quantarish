@@ -219,12 +219,12 @@
       { match: /(who are you|what are you|your name|tum kaun|name kya)/i, reply: "I'm <b>Mr Aris</b> — your AI assistant here to help with everything about Quantaris Group. How can I help you today?" },
       { match: /(services|service|kya karte|offer|solutions)/i, reply: "We offer: <b>AI Digital Marketing</b> (Google Ads, Meta, PPC &amp; more), <b>Web Development</b>, <b>App Development</b>, <b>IT Consulting</b>, <b>SaaS/Product Development</b>, <b>AI Solutions</b>, <b>Business Strategy</b>, and <b>UX/UI Design</b>. Visit our <a href='/pages/services.html' style='color:#7FB3FF'>Services page</a> for details!" },
       { match: /(ux|ui|design|wireframe|prototype|user experience|interface)/i, reply: "We craft human-centred <b>UX/UI Design</b> — research, wireframes, prototypes, high-fidelity interfaces, and design systems that convert. See our <a href='/pages/services.html#ux-ui' style='color:#7FB3FF'>UX/UI Design service</a>!" },
-      { match: /(price|pricing|cost|charge|fees|rate|kitna|costing)/i, reply: "Pricing depends on your project scope. For a free consultation, reach us at <b>info@quantaris.com</b> or call <b>+91 87911 90999</b> — we'll share a tailored quote!" },
+      { match: /(price|pricing|cost|charge|fees|rate|kitna|costing)/i, reply: "Pricing depends on your project scope. For a free consultation, reach us at <b>info@quantarisgroup.com</b> or call <b>+91 87911 90999</b> — we'll share a tailored quote!" },
       { match: /(website|web development|web design|site)/i, reply: "We build fast, modern, and SEO-friendly websites — corporate sites, e-commerce, and web apps. Check our <a href='/pages/services.html' style='color:#7FB3FF'>Services page</a>!" },
-      { match: /(app|mobile|android|ios|application)/i, reply: "We build native (iOS/Android) and cross-platform apps with Flutter & React Native. Want one? Email <b>info@quantaris.com</b>!" },
+      { match: /(app|mobile|android|ios|application)/i, reply: "We build native (iOS/Android) and cross-platform apps with Flutter & React Native. Want one? Email <b>info@quantarisgroup.com</b>!" },
       { match: /(ai|artificial|chatbot|machine learning)/i, reply: "We create AI-powered solutions — chatbots, automation, and data tools — to make your business smarter. Tell me about your idea!" },
       { match: /(marketing|social media|seo|ads|instagram|facebook)/i, reply: "Our AI Digital Marketing suite covers Google Ads, Meta, PPC, SEO, and social media — one engine for all your paid &amp; organic growth. See our <a href='/pages/services.html#ai-digital-marketing' style='color:#7FB3FF'>AI Digital Marketing service</a>!" },
-      { match: /(contact|phone|number|call|email|mail|reach)/i, reply: "You can reach us at:<br>&#9993; <b>info@quantaris.com</b><br>&#9742; <b>+91 87911 90999</b><br>Careers: <b>hr@quantarisgroup.com</b><br>Legal: <b>legal@quantarisgroup.com</b><br>Visit the <a href='/pages/contact.html' style='color:#7FB3FF'>Contact page</a>!" },
+      { match: /(contact|phone|number|call|email|mail|reach)/i, reply: "You can reach us at:<br>&#9993; <b>info@quantarisgroup.com</b><br>&#9742; <b>+91 87911 90999</b><br>Careers: <b>hr@quantarisgroup.com</b><br>Legal: <b>legal@quantarisgroup.com</b><br>Visit the <a href='/pages/contact.html' style='color:#7FB3FF'>Contact page</a>!" },
       { match: /(address|location|office|where|visit|khahan)/i, reply: "Our office: <b>A Radha Vihar, Kamla Nagar, Agra, UP 282005</b>. Feel free to visit or message us!" },
       { match: /(team|member|founder|yash|sachin|gaurav|bhagwan|who works)/i, reply: "Our leaders: <b>Yash Raj Singh</b> (Founder &amp; President), <b>Sachin Arora</b> (Co-Founder &amp; Software Developer), <b>Gaurav</b> (Managing Partner), and <b>Bhagwan Singh</b> (Co-Founder). Meet them on the <a href='/pages/about.html' style='color:#7FB3FF'>About page</a>!" },
       { match: /(job|career|vacancy|hiring|intern|apply|role|position|opening)/i, reply: "We're hiring! Open roles: <b>SEO Specialist</b>, <b>HR Intern</b>, <b>Project Coordinator</b>, <b>Business Development Manager</b> &amp; <b>Executive</b>. Check the <a href='/pages/career.html' style='color:#7FB3FF'>Career page</a>!" },
@@ -235,9 +235,9 @@
     ];
 
     const FALLBACKS = [
-      "Good question! For that, I'd suggest reaching out to our team at <b>info@quantaris.com</b> or <b>+91 87911 90999</b> — they'll give you a perfect answer!",
-      "Hmm, I'm not 100% sure about that. Let me connect you with our team — email <b>info@quantaris.com</b> and we'll respond quickly!",
-      "I don't have that info handy, but our team at Quantaris Group can help! Email <b>info@quantaris.com</b> or visit our <a href='/pages/contact.html' style='color:#7FB3FF'>Contact page</a>."
+      "Good question! For that, I'd suggest reaching out to our team at <b>info@quantarisgroup.com</b> or <b>+91 87911 90999</b> — they'll give you a perfect answer!",
+      "Hmm, I'm not 100% sure about that. Let me connect you with our team — email <b>info@quantarisgroup.com</b> and we'll respond quickly!",
+      "I don't have that info handy, but our team at Quantaris Group can help! Email <b>info@quantarisgroup.com</b> or visit our <a href='/pages/contact.html' style='color:#7FB3FF'>Contact page</a>."
     ];
 
     function getReply(text) {

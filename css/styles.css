@@ -178,6 +178,13 @@ a { color: inherit; }
   box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(22, 127, 219, 0.06);
 }
 
+/* Hero stats cards — visible and branded */
+section:first-of-type .grid .card {
+  background: linear-gradient(180deg, rgba(22, 127, 219, 0.14), rgba(22, 127, 219, 0.04));
+  border: 1px solid rgba(22, 127, 219, 0.28);
+  box-shadow: 0 8px 30px -10px rgba(22, 127, 219, 0.3);
+}
+
 .icon-box {
   display: inline-flex;
   align-items: center;
